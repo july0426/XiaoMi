@@ -1,0 +1,75 @@
+{% extends "myweb/base.html" %}
+{% load static from staticfiles %}
+{%block block_js%}
+
+<!-- <script type="text/javascript" src="{% static 'myweb/public/js/5.js' %}"></script> -->
+{%endblock%}
+{%block mycss%}
+<link rel="stylesheet" type="text/css" href="{% static 'myweb/css/5.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'myweb/css/zhuce.css' %}">
+{%endblock%}
+{%block mymain%}
+    <!-- 主体 -->
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-6 col-md-offset-3">
+                <form role="form" action="{% url 'dingdans' %}" method="post">
+                {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputtext1">联系人</label>
+                        <input type="readonly" class="form-control" name="linkman" value="{{user.linkman}}" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputtext1">地址</label>
+                        <input type="readonly" class="form-control" name="address" value="{{user.address}}" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputtext1">邮编</label>
+                        <input type="readonly" class="form-control" name="code" value="{{user.code}}" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputtext1">联系电话</label>
+                        <input type="readonly" class="form-control" name="phone" value="{{user.phone}}" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputtext1">总金额</label>
+                        <input type="readonly" class="form-control" name="total" disabled value="{{total}}元" >
+                        <input type="hidden" class="form-control" name="total"  value="{{total}}元" >
+                    </div>
+                    <br>
+                    <table class="table table-hover">
+                        <tr class="row">
+                            <th>名称</th>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商品</th>
+                            <th>&nbsp;&nbsp;单价</th>
+                            <th>数量</th>
+                            <th>&nbsp;&nbsp;小计</th>
+                        </tr>
+                        {%for shop in goodslist.values %}
+                        <tr class="row">
+                        <input type="hidden" name = sid value="{{shop.id}}">
+                        <input type="hidden" name = m value="{{shop.m}}">
+
+                            <td class="">{{shop.goods}}</td>
+                            <td><img src="/static/goods/s_{{ shop.picname }}"</td>
+                            <td>{{shop.price}}</td>
+                            <td>&nbsp;&nbsp;{{ shop.m }}</td>
+                            <td>{% widthratio shop.price 1 shop.m %}</td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                    
+                    <button type="submit" class="btn btn-primary btn-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;认&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button type="button"  onclick="window.location='{%url 'dingdan'%}'" class="btn btn-primary btn-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修&nbsp;&nbsp;&nbsp;&nbsp;改&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="window.location='{%url 'index'%}'">&nbsp;&nbsp;&nbsp;接&nbsp;&nbsp;着&nbsp;&nbsp;逛&nbsp;&nbsp;逛&nbsp;&nbsp;&nbsp;</button>
+                    <div style="height:2rem"></div>
+                    <div></div>
+                    <div></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+            
+    
+{%endblock%}

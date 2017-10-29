@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>小米商城登录页面</title>
+
+    <!-- Bootstrap -->
+    <link href="./public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./public/js/jquery-1.12.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./public/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./denglu.css">
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+    <script type="text/javascript" src='./public/js/jquery-1.12.4.min.js'></script>
+    <!-- 背景图片 -->
+    <div class="container-fluid">
+        <div class="row"><img src="denglu/denglu.png" class="img-responsive beijing" alt=""></div>
+    </div>
+    <!-- 登录注册页面 -->
+    <div class="container-fluid">
+
+        <div class="denglu">
+            
+            <form role="form" class="dl-form">
+                <div class="a-div">
+                    <a href="" class="li-1">账号登录</a>
+                    <span>|</span>
+                    <a href="" class="li-2">扫码登录</a>
+                </div>
+                
+                <input name="username" class="int1" type="text" id="int1" value="邮箱/手机号码/小米账号">
+                <input name="password" class="int2" type="text" id="int2" value="密码">
+                <button class="btn3">立即登录</button><span></span>
+                <div class="a-div1">
+                    <a href="" class="li-11">注册小米账号</a>
+                    <span>|</span>
+                    <a href="" class="li-21">忘记密码?</a>
+                </div>
+                <div id="odiv">
+                    <div id="div1"></div>
+                    <div id="div3">其他方式登录</div>
+                    <div id="div2"></div>
+                </div><br>
+                <div class="waibu">
+                    <ul class="ul3">
+                        <li class="li31"><a href=""><img src="denglu/qq.png" alt=""></a></li>
+                        <li class="li32"><a href=""><img src="denglu/weibo.png" alt=""></a></li>
+                        <li class="li33"><a href=""><img src="denglu/zfb.png" alt=""></a></li>
+                        <li class="li34"><a href=""><img src="denglu/weixin.png" alt=""></a></li>
+                    </ul>
+                </div>
+                
+            </form>
+
+        </div>
+        
+    </div>
+
+       
+    <!-- 登录验证事件-->
+    <script type="text/javascript">
+    // 设置全局变量
+    var nameok=false;
+    var passok=false;
+        // 获取焦点事件
+        $('input').focus(function(){
+            var a=$(this);  
+            
+            if(a.val()=="邮箱/手机号码/小米账号"||"密码"){
+                a.val("")
+            }
+        });
+        丧失焦点
+        $('input[name=username]').blur(function()){
+            var a = $(this)val();
+            var reg = /^\w+@\w+\.(com|cn|org|net)$/;
+            var reg1 = /^\w{6,18}$/;
+            var reg2 = /^\d{11}$/;
+            if(a == ""){
+                $(this).val("邮箱/手机号码/小米账号")
+            };else{
+
+                if(reg1.test(a)||reg.test(a)||reg2.test(a)){
+                    nameok=true;
+                }else{
+                    $(".btn3").next('span').html("账号格式不正确").css('color','red')
+                }
+            }
+        };
+    //     //丧失焦点事件2
+    //     $('input[name=password]').blur(function(){
+    //         var a =$(this).val();
+    //         var reg =  /^\w{6,18}$/;
+    //         if(a==""){
+    //             $(this).val("密码")
+    //         }else{
+    //             if(reg.test(a)){
+    //                 passok=true;    
+    //             }else{
+    //                 $(".btn3").next('span').html("密码不正确").css('color','red')
+    //             }
+    //         }
+    //     });
+    //     $('form').submit(function(){
+    //     //触发input 丧失焦点事件
+    //     $('input').trigger('blur');
+
+    //     //判断如果都正确
+    //     if(nameok && passok ){
+    //         return true;
+    //     }
+    //     //阻止默认行为
+    //     return false;
+    // })
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+
+    </script>
+</body>

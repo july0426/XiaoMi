@@ -1,0 +1,127 @@
+{% extends 'myadmin/base.html' %}
+{% block mymain %}
+<div class="span9">
+	<h3>
+		订单信息
+
+	</h3>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>
+					ID
+				</th>
+				<th>
+					会员ID
+				</th>
+				<th>
+					联系人
+				</th>
+				<th>
+					地址
+				</th>
+				<th>
+					邮编
+				</th>
+				<th>
+					电话
+				</th>
+				<th>
+					购买时间
+				</th>
+				<th>
+					总金额
+				</th>
+				<th>
+					状态
+				</th>
+				<th class="span-2">
+					&nbsp;&nbsp;&nbsp;操作
+				</th>
+				<th>
+					More-->
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for orders in list %}
+			<tr>			
+				<td>
+					{{ orders.id }}
+				</td>
+				<td>
+					{{ orders.uid }}
+				</td>
+				<td>
+					{{ orders.linkman }}
+				</td>
+				<td>
+					{{ orders.address }}
+				</td>
+				<td>
+					{{ orders.code }}
+				</td>
+				<td>
+					{{ orders.phone }}
+				</td>
+				<td>
+					{{ orders.addtime }}
+				</td>
+				<td>
+					{{ orders.total }}
+				</td>
+				<td>
+					
+					{% if orders.status == 0 %}
+							新订单
+					{% elif orders.status == 1 %}
+						已发货
+					{% elif orders.status == 2 %}
+						已收货
+					{% else %}
+						无效订单
+					{% endif %}		
+
+				</td>	
+				<td>
+					<a href="{% url 'myadmin_orderseidt' orders.id %}">编辑</a>
+					<a href="{% url 'myadmin_ordersdel' orders.id %}">删除</a>
+				</td>
+				
+					
+				
+				<td>
+					<div class="btn-group">
+	    				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	      					查看详情
+	      					<span class="caret"></span>
+	    				</button>
+	    				<ul class="dropdown-menu">
+	    					{% for detail in orders.ob%}
+	      					<li><a href="#">{{detail.name}};单价:{{detail.price}}元;{{detail.num}}件;</a></li>
+	      					
+	    					{%endfor%}
+	      					
+	    				</ul>
+	  				</div>
+  				</td>			
+			</tr>
+		{%endfor%}	
+		</tbody>
+	</table>					
+		<ul>
+		{%for pindex in plist%}
+			{%if pIndex == pindex%}
+			{{pindex}}&nbsp;&nbsp;
+			{%else%}
+			<li style="float:left;list-style:none">
+				<a href="{% url 'myadmin_ordersindex' pindex %}">{{pindex}}</a>&nbsp;&nbsp;
+			</li>
+			
+			{%endif%}
+			{%endfor%}
+		</ul>
+	
+</div>
+			
+{% endblock %}

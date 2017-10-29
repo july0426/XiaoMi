@@ -1,0 +1,96 @@
+{% extends 'myadmin/base.html' %}
+{% block mymain %}
+<div class="span9">
+	<h3>
+		会员信息
+	</h3>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>
+					ID
+				</th>
+				<th>
+					name
+				</th>
+				<th>
+					username
+				</th>
+				<th>
+					sex
+				</th>
+				<th>
+					address
+				</th>
+				<th>
+					phone
+				</th>
+				<th>
+					email
+				</th>
+				<th>
+					state
+				</th>
+				<th>
+					addtime
+				</th>
+				<th>
+					操作
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for user in list %}
+			<tr>			
+				<td>
+					{{ user.id }}
+				</td>
+				<td>
+					{{ user.name }}
+				</td>
+				<td>
+					{{ user.username }}
+				</td>
+				<td>
+					{{ user.sex }}
+				</td>
+				<td>
+					{{ user.address }}
+				</td>
+				<td>
+					{{ user.phone }}
+				</td>
+				<td>
+					{{ user.email }}
+				</td>
+				<td>
+					{{ user.state }}
+				</td>
+				<td>
+					{{ user.addtime }}
+				</td>	
+				<td>
+					<a href="{% url 'myadmin_userseidt' user.id %}">编辑</a>
+				</td>
+				<td>
+					<a href="{% url 'myadmin_usersdel' user.id %}">删除</a>
+				</td>			
+			</tr>
+		{%endfor%}	
+		</tbody>
+	</table>					
+		<ul>
+		{%for pindex in plist%}
+			{%if pIndex == pindex%}
+			{{pindex}}&nbsp;&nbsp;
+			{%else%}
+			<li style="float:left;list-style:none">
+				<a href="{% url 'myadmin_usersindex' pindex %}">{{pindex}}</a>&nbsp;&nbsp;
+			</li>			
+			{%endif%}
+		{%endfor%}
+		</ul>
+	
+</div>
+			
+{% endblock %}

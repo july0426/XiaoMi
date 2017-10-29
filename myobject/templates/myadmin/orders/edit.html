@@ -1,0 +1,74 @@
+{% extends 'myadmin/base.html' %}
+{% block mymain %}
+<div class="span9">
+	<h3>
+		编辑订单
+	</h3>
+	<form action="{% url 'myadmin_ordersupdate' order.id %}" method="post" enctype="multipart/form-data">
+		<table class="table table-bordered table-striped">
+		{% csrf_token %}
+			<div class="control-group">
+				<label class="control-label" for="input01">会员ID</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" readonly id="input01" value="{{order.uid}}" name='uid'/>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">联系人</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" readonly id="input01" value="{{order.linkman}}" disabled name="linkman" />
+				</div>
+			</div>		
+			<div class="control-group">
+				<label class="control-label" for="input01">地址</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" readonly id="input01" value="{{order.address}}" name="address"/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">邮编</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" readonly value="{{order.code}}" name="code"/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">电话</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" readonly value="{{order.phone}}" name="phone"/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">购买时间</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" readonly value="{{order.addtime}}" name="addtime" />
+				</div>
+			</div>	
+			<div class="control-group">
+				<label class="control-label" for="input01">总金额</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" readonly name="total" value="{{order.total}}"/>
+				</div>
+			</div>			
+			<div class="control-group">
+				<label class="control-label" for="input01">状态</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="status" value="0" /> 新订单 &nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="status" value="1" /> 已发货	&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="status" value="3" /> 无效订单
+			</div>	
+											
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">保存</button> 
+				<button class="btn" type="reset">重置</button>
+			</div>
+		</table>
+	</form>
+</div>
+			
+{% endblock %}
+{% block myjs %}
+<script type="text/javascript">
+	window.onload = function(){
+		$("input[name='status'][value='{{order.status}}']").attr("checked", true);     
+    }	
+</script>
+{% endblock %}

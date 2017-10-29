@@ -1,0 +1,56 @@
+{% extends 'myadmin/base.html' %}
+{% block mymain %}
+<div class="span9">
+	<h3>
+		商品信息
+	</h3>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>
+					类别ID
+				</th>
+				<th>
+					分类名称
+				</th>
+				<th>
+					父类别ID
+				</th>
+				<th>
+					分类路径
+				</th>
+				<th>
+					操作
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for type in typelist %}
+			<tr>			
+				<td>
+					{{ type.id }}
+				</td>
+				<td>
+					{{ type.pname}}|--{{ type.name }}
+				</td>
+				<td>
+					{{ type.pid }}
+				</td>
+				<td>
+					{{ type.path }}
+				</td>
+				<td>
+					<a href="{% url 'myadmin_typeeidt' type.id %}">编辑</a>
+				</td>
+				<td>
+					<a href="{% url 'myadmin_typedel' type.id %}">删除</a>
+				</td>			
+			</tr>
+		{%endfor%}	
+		</tbody>
+	</table>					
+		
+	
+</div>
+			
+{% endblock %}

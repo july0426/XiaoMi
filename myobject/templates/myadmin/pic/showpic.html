@@ -1,0 +1,40 @@
+{% extends 'myadmin/base.html' %}
+{% load static from staticfiles %}
+{% block mymain %}
+<div class="span9">
+	<h1>
+		Gallery
+	</h1>
+			
+	<ul class="thumbnails">
+	{% for pic in list %}
+		<li class="span3">
+			<a href="#" class="thumbnail">
+				<img src="/static/pic/{{pic.picname }}"  alt="" />
+			</a>
+		</li>
+	{%endfor%}
+	</ul>
+	
+	<h2>Gallery with Captions</h2>
+	<ul class="thumbnails">
+		<li class="span3">
+			<div class="thumbnail">
+				<img src="" alt="" />
+				<div class="caption">
+					<h5>Thumbnail label</h5>
+					<p>Thumbnail caption right here...</p>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<h2>Gallery with Feature Graphic</h2>
+	<ul class="thumbnails">
+		<li class="span4">
+			<a href="#" class="thumbnail">
+				<img src="" alt="" />
+			</a>
+		</li>
+	</ul>
+</div>
+{% endblock %}

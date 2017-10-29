@@ -1,0 +1,80 @@
+{% extends 'myadmin/base.html' %}
+{% block mymain %}
+<div class="span9">
+	<h3>
+		编辑会员信息
+	</h3>
+	<form action="{% url 'myadmin_usersupdate' user.id %}" method="post" enctype="multipart/form-data">
+		<table class="table table-bordered table-striped">
+		{% csrf_token %}
+			<div class="control-group">
+				<label class="control-label" for="input01">昵称</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{user.username}}" name='username'/>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">真实姓名</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{user.name}}" disabled name="name" />
+				</div>
+			</div>		
+			<div class="control-group">
+				<label class="control-label" for="input01">性别</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="sex" value="0" /> 男 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="sex" value="1" /> 女	
+			</div>	
+			<div class="control-group">
+				<label class="control-label" for="input01">地址</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{user.address}}" name="address"/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">邮编</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{user.code}}" name="code"/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">电话号码</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{user.phone}}" name="phone"/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">邮箱</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{user.email}}" name="email" />
+				</div>
+			</div>			
+			<div class="control-group">
+				<label class="control-label" for="input01">状态</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="state" value="0" /> 后台管理员 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="state" value="1" /> 启用	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="state" value="2" /> 禁用	
+			</div>	
+			<div class="control-group">
+				<label class="control-label" for="input01">添加时间</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name="addtime" value="{{user.addtime}}"/>
+				</div>
+			</div>									
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">保存</button> 
+				<button class="btn" type="reset">重置</button>
+			</div>
+		</table>
+	</form>
+</div>
+			
+{% endblock %}
+{% block myjs %}
+<script type="text/javascript">
+	window.onload = function(){
+		$("input[name='state'][value='{{user.state}}']").attr("checked", true);
+        $("input[name='sex'][value='{{user.sex}}']").attr("checked", true);     
+    }	
+</script>
+{% endblock %}

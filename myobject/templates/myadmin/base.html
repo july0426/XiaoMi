@@ -1,0 +1,204 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta charset="utf-8">
+		<title>网站后台管理</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="{% static 'myadmin/css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'myadmin/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+		<link href="{% static 'myadmin/css/site.css' %}" rel="stylesheet">
+		<!--[if lt IE 9]><script src="{% static 'js/html5.js' %}"></script><![endif]-->
+	</head>
+	<body>
+		<div class="container">
+            <!-- 页头开始 -->
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#">网站后台管理</a>
+						<div class="nav-collapse">
+							<ul class="nav">
+								<li class="active">
+									<a href="{% url 'myadmin_index' %}">首页</a>
+								</li>
+								<li>
+									<a href="settings.htm">在线设置</a>
+								</li>
+								<li>
+									<a href="help.htm">帮助</a>
+								</li>
+								<li class="dropdown">
+									<a href="help.htm" class="dropdown-toggle" data-toggle="dropdown">更多 <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="help.htm">Introduction Tour</a>
+										</li>
+										<li>
+											<a href="help.htm">Project Organisation</a>
+										</li>
+										<li>
+											<a href="help.htm">Task Assignment</a>
+										</li>
+										<li>
+											<a href="help.htm">Access Permissions</a>
+										</li>
+										<li class="divider">
+										</li>
+										<li class="nav-header">
+											Files
+										</li>
+										<li>
+											<a href="help.htm">How to upload multiple files</a>
+										</li>
+										<li>
+											<a href="help.htm">Using file version</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<form class="navbar-search pull-left" action="">
+								<input type="text" class="search-query span2" placeholder="Search" />
+							</form>
+							<ul class="nav pull-right">
+								<li>
+									<a href="">@{{request.session.adminuser}}</a>
+								</li>
+								<li>
+									<a href="{% url 'myadmin_logout' %}">退出</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div><!-- 页头结束-->			
+            
+            <div class="row">
+				<div class="span3">
+                    <!-- 侧边导航开始 -->
+					<div class="well" style="padding: 8px 0;">
+						<ul class="nav nav-list">
+							<li class="nav-header">
+								导航栏
+							</li>
+							<li class="daohang" id = 'zhuye'>
+								<a  href="{% url 'myadmin_index' %}"><i class="icon-white icon-home"></i> 首页</a>
+							</li>
+                            <li class="nav-header">
+								会员管理
+							</li>
+							<li class="daohang" id = 'user'>
+								<a  href="{% url 'myadmin_usersindex' pIndex %}"><i class="icon-user"></i> 会员信息浏览</a>
+							</li>
+							<li class="daohang">
+								<a   href="{% url 'myadmin_usersadd' %}"><i class="icon-check"></i> 添加会员</a>
+							</li>
+							<li class="nav-header">
+								商品信息管理
+							</li>
+							<li class="daohang" id = 'add'>
+								<a href="{% url 'myadmin_goodsindex' pIndex %}"><i class="icon-folder-open"></i> 商品信息浏览</a>
+							</li>
+							<li class="daohang" >
+								<a  href="{% url 'myadmin_goodsadd' %}"><i class="icon-check"></i> 添加商品信息</a>
+							</li>
+							<li class="nav-header">
+								商品分类管理
+							</li>
+							<li class="daohang">
+								<a   href="{% url 'myadmin_typeindex'  %}"><i class="icon-folder-open"></i> 商品分类浏览</a>
+							</li>
+							<li class="daohang">
+								<a   href="{% url 'myadmin_typeadd' %}"><i class="icon-check"></i> 添加商品分类</a>
+							</li>
+							<li class="nav-header">
+								订单管理
+							</li>
+							<li class="daohang" id= "order">
+								<a   href="{% url 'myadmin_ordersindex' pIndex %}"><i class="icon-folder-open"></i> 订单浏览</a>
+							</li>
+							<li>
+								<a href="{% url 'myadmin_ordersadd' %}"><i class="icon-check"></i> 添加订单</a>
+							</li>
+							<li id= "detail">
+								<a href="{% url 'myadmin_detailindex' pIndex %}"><i class="icon-folder-open"></i> 订单详情表浏览</a>
+							</li>
+							<li>
+								<a   href="{% url 'myadmin_detailadd' %}"><i class="icon-check"></i> 添加订单详情表</a>
+							</li>
+							<li class="nav-header">
+								商品信息上传
+							</li>
+							<li >
+								<a  href="{% url 'myadmin_pic' %}"><i class="icon-picture"></i> 商品图片上传</a>
+							</li>
+							<li>
+								<a  href="{% url 'myadmin_showpic' %}"><i class="icon-picture"></i> 商品图片展示</a>
+							</li>
+							<li>
+							<!-- <input type="hidden" id = "hidden" name = 'hidden'>
+								<a   href="settings.htm"><i class="icon-white icon-homeg"></i> Settings</a>
+							</li>
+							<li class="divider">
+							</li>
+							
+							<li class="nav-header">
+								Bonus Templates
+							</li>
+							<li>
+								<a class="link"  href=""><i class="icon-list-alt"></i> 新闻</a>
+							</li>
+							<li>
+								<a   href=""><i class="icon-stop"></i> 站内信</a>
+							 --></li>
+						</ul>
+					</div><!-- 侧边导航结束 -->
+				</div>
+				{% block mymain %}
+
+				{% endblock %}
+			</div>
+		</div>
+		<script src="{% static 'myadmin/js/jquery.min.js' %}"></script>
+		<script src="{% static 'myadmin/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'myadmin/js/site.js' %}"></script>
+		<script type="text/javascript">
+		var a = window.location.href;
+		var b = document.getElementsByTagName('a');
+		// console.log(a);
+		// var reg = new RegExp(a);
+		// console.log(reg);
+		for( var i=0; i<b.length; i++ ){
+			if (a =='http://192.168.2.191:8000/myadmin/'){
+				$('#zhuye').attr('class','active');
+			}else if (a =='http://192.168.2.191:8000/myadmin/goods/'){
+				$('#add').attr('class','active');
+			}else if (a =='http://192.168.2.191:8000/myadmin/orders/'){
+				$('#order').attr('class','active');
+			}else if (a =='http://192.168.2.191:8000/myadmin/users/'){
+				$('#user').attr('class','active');
+			}else if (a =='http://192.168.2.191:8000/myadmin/detail/'){
+				$('#detail').attr('class','active');
+			}else if (a == b[i].href ){
+				// console.log('ok');
+				$(b[i]).parent().attr('class','active');
+			}
+				
+              //全部修改为'dpan';
+              // console.log(b[i].href);
+               //修改语句
+               
+               	
+               	
+          };
+		
+		
+		$('.daohang').click(function() {
+			$(this).addClass('active');	
+			
+		});
+		</script>
+		{% block myjs %}
+		{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>小米商城</title>
+
+    <!-- Bootstrap -->
+    <link href="./public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./public/js/jquery-1.12.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./public/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./1.css">
+	<style type="text/css">
+	li{list-style:none;}
+/*	body{color:#B0B0B0;}*/
+	body,div,span,ul,li,a{padding:0;margin:0;}
+	#dhl{
+		margin-left:30px; 
+	}
+	.navbar-collapse{
+		padding-left:5px;padding-right:5px; 
+	}
+	.navbar-nav>li>a{padding:10px;}
+	.gwc_sj{
+
+	}
+
+
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src='./public/js/jquery-1.12.4.min.js'></script>
+	<nav class="navbar" role="navigation">
+	  <!--   <div class="container-fluid"> -->
+		    <!-- 手机展示导航栏 -->
+		    <div class="navbar-header navbar-inverse">
+		        <button type="button" class="navbar-toggle" data-toggle="collapse"
+		                data-target="#example-navbar-collapse">
+		            <span class="sr-only">切换导航</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		        </button>
+		        <!-- visible-xs 小手机显示 -->
+		        <a class="navbar-brand visible-xs" href="#">小米商城</a>
+		    </div>
+		    <!-- pc端显示导航栏 -->
+		    <div class="collapse navbar-collapse navbar-inverse " id="example-navbar-collapse" >
+		        <!-- 左边的导航栏 -->
+		        <ul class="nav navbar-nav"  role="navigation" style='margin-left:130px;margin-right:30px;'>
+		            <li><a href="#">小米商城</a></li>
+					<li><a href="#">米聊</a></li>
+					<li><a href="#">游戏</a></li>
+					<li><a href="#">多看阅读</a></li>
+					<li><a href="#">云服务</a></li>
+					<li><a href="#">金融</a></li>
+					<li><a href="#">小米商城移动版</a></li>
+					<li><a href="#">问题反馈</a></li>
+					<li><a href="#">SelectRegion</a></li>
+		        </ul>
+		        <!-- 右边的导航栏 -->
+		        <ul class="nav navbar-nav navbar-right" role="navigation" style='margin-left:30px;margin-right:130px;'>
+		        	<li><a href="#">登录</a></li>
+		        	<li><a href="#">注册</a></li>
+		        	<li><a href="#">消息通知</a></li>
+		        	<li style='background:#424242' class='gwc'>
+			        	<a href="#"><img src="./image/gwc.png">购物车(0)</a>
+		        	</li>
+		        	
+		        </ul>
+		         <!-- 购物车 -->
+		        <div class="cart"></div>
+		    </div>
+	   <!--  </div> -->
+	</nav>
+	<!-- 事件 -->
+	<script type="text/javascript">
+	// 1.购物车事件
+	$('.gwc').mouseover(function(){
+		$('.cart').css('display','block')
+	})
+	$('.gwc').mouseout(function(){
+		$('.cart').css('display','none')
+	})
+
+
+	</script>
+
+	
+</body>
+</html>

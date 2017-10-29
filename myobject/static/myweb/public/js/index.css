@@ -1,0 +1,19 @@
+.daohang{
+	border-radius: 0%;
+	
+}
+#daohang1 li a{
+	font-size: 12px;
+	font-family:"Arial";
+}
+html,body{
+	font-family:"Arial";
+	
+}
+.fenlei div{
+	float:left;
+}
+.nav > li > a{
+	padding: 0px;
+	margin: 0px;
+}

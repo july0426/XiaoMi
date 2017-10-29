@@ -1,0 +1,96 @@
+
+{% extends 'myweb/base.html' %}
+{% load static from staticfiles %}
+{% block mycss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myweb/css/xiangqing.css' %}">
+{% endblock %}
+{% block mymain %}
+		<!-- 首页导航 -->
+	<div  class="shouye row">
+		<nav class="navbar " role="navigation">
+			<div class="shouye1 col-md-1 col-sm-2"></div>
+		    <ul class="nav navbar-nav col-xs-6 col-sm-8" >
+		        <li><a class="nav-a souye " href="{% url 'index'%}">首页  ></a></li>
+		        {% for tt in types %}
+				<a href="{{ request.path}} ?ttid={{tt.id}}  title='{{tt.id}}' "></a> 
+				{% endfor %}		            
+		    </ul>		    
+		</nav>
+	</div>
+	<!-- 首页 导航end-->
+	<!-- 商品列表 -->
+	<!-- 商品列表 -->
+		<div class="container shangpin">
+			<!-- 手机 -->
+			<div class="row">
+				<div class='col-md-1'></div>
+				<div class=" col-md-10 shouji">
+					<ul>
+						<li class="pull-left yinc"><img src="{% static 'myweb/image_xq/xl.png' %}" alt=""></li>
+						
+					</ul>				
+				</div>
+			</div>
+			
+			<div class="row">
+				<ul>						
+					{% for stu in stulist %}
+					<li class='goods col-md-3 col-xs-6 col-sm-6 '>					
+						<a href=" {% url 'detail' stu.id %}"><img src="/static/goods/s_{{ stu.picname }}" alt=""></a><br>
+						<span><a href="">{{ stu.goods }}</a></span>
+						<span><a href="">{{ stu.price }}元</a></span>
+						<input type="hidden">						
+						<a href="{% url 'detail' stu.id %}" style="width:100px;float:left;margin-left:0;padding:0">
+							<button style = "margin-bottom:10px;width:80px;margin-left:20px" class="btn1">立即购买</button>
+						</a>
+						<a href=" {% url 'detail' stu.id %}" style="width:100px;float:left;padding:0">
+							<button style = "margin-left:30px;width:100px;margin-bottom:10px;">加入购物车</button>
+						</a>				
+					</li>
+				{% endfor %}					
+				</ul>
+			</div>
+		</div>	
+	
+	
+{% endblock %}
+{% block myjs %}	
+	<!-- 事件 -->
+
+<script type="text/javascript">
+	for (var i = $(".goods").length - 1; i >= 0; i--) {
+
+			if((i+1)%4==0){
+
+				$(".goods:eq("+i+")").css('border-right','0')
+		}
+	};
+	
+	// 手机图片右侧边框处理
+	
+	// 点击按妞折叠隐藏
+	$(".yinc").click(function(){
+		var i = $(this)
+		var cur = i.parents('.hh').siblings();
+		if(cur.css('display') == 'block'){
+			cur.css('display', 'none');
+			i.children('img').attr('src','/static/myweb/public/img/none.png')
+		}else{
+			cur.css('display', 'block');
+			i.children('img').attr('src','/static/myweb/public/img/block.png')
+		}
+	});
+	$(".yinc1").click(function(){
+		var i = $(this)
+		var cur = i.parents('.hh1').siblings();
+		if(cur.css('display') == 'block'){
+			cur.css('display', 'none');
+			i.children('img').attr('src','/static/myweb/public/img/none.png')
+		}else{
+			cur.css('display', 'block');
+			i.children('img').attr('src','/static/myweb/public/img/block.png')
+		}
+	});
+		
+</script>
+{% endblock %}

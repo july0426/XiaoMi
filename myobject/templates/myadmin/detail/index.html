@@ -1,0 +1,72 @@
+{% extends 'myadmin/base.html' %}
+{% block mymain %}
+<div class="span9">
+	<h3>
+		订单详情信息
+	</h3>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>
+					订单ID号
+				</th>
+				<th>
+					商品ID号
+				</th>
+				<th>
+					商品名称
+				</th>
+				<th>
+					单价
+				</th>
+				<th>
+					数量
+				</th>
+				<th>
+					操作
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for detail in list %}
+			<tr>			
+				<td>
+					{{ detail.orderid }}
+				</td>
+				<td>
+					{{ detail.goodsid }}
+				</td>
+				<td>
+					{{ detail.name }}
+				</td>
+				<td>
+					{{ detail.price }}
+				</td>
+				<td>
+					{{ detail.num }}
+				</td>
+				<td>
+					<a href="{% url 'myadmin_detaileidt' detail.id %}">编辑</a>
+				</td>
+				<td>
+					<a href="{% url 'myadmin_detaildel' detail.id %}">删除</a>
+				</td>			
+			</tr>
+		{%endfor%}	
+		</tbody>
+	</table>					
+		<ul>
+		{%for pindex in plist%}
+			{%if pIndex == pindex%}
+			{{pindex}}&nbsp;&nbsp;
+			{%else%}
+			<li style="float:left;list-style:none">
+				<a href="{% url 'myadmin_detailindex' pindex %}">{{pindex}}</a>&nbsp;&nbsp;
+			</li>			
+			{%endif%}
+		{%endfor%}
+		</ul>
+	
+</div>
+			
+{% endblock %}

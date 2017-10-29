@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>小米商城购物车页面</title>
+
+    <!-- Bootstrap -->
+    <link href="./public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./public/js/jquery-1.12.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./public/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="gwc.css">
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+    <script type="text/javascript" src='./public/js/jquery-1.12.4.min.js'></script>
+    <!-- 导航栏 -->
+    <div class="row" style="height:1rem"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+            <!-- 小米logo -->
+                <div class="col-md-1"><a href=""><img src="gwc/logo.png" alt=""></a></div>
+                <div class="col-md-2">
+                    <h3>我的购物车</h3>
+                </div>
+                <div class="col-md-6">
+                    <h6>&nbsp;</h6>
+                    <h6 class="log-h6">温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</h6>
+                </div>
+                <div class="col-md-3">
+                    <ul class="nav nav-tabs" style="border:0px;list-style:none;text-decoration: none">
+                        <li class="dropdown col-md-7" >
+                            <h6 style="font-size:1px">&nbsp;</h6>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">17610829799
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">个人中心</a></li>
+                                <li>
+                                    <a href="#">评价晒单</a></li>
+                                <li>
+                                    <a href="#">我喜欢</a></li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">退出登录</a></li>
+                            </ul>
+                        </li>
+                        <h6 style="font-size:1px">&nbsp;</h6>
+                        <li class="col-md-5">
+                            <a href="#">我的订单</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row fgx">
+        
+    </div>
+    <!-- 主体 -->
+    <div class="container-fluid" style="background: rgb(245, 245, 245);height:300px;">
+        <div class="col-md-12" style="height:4rem"></div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1" style="background: #fff;font-size:1.4rem">
+                <div class="col-md-6">
+                    <div class="col-md-1"><input class="checkAllGoods"type="checkbox"></div>
+                    <div class="col-md-4"><div style="height:0.5rem"></div><h5>全选</h5></div>
+                    <div class="col-md-7"><div style="height:0.5rem"></div><h5>商品名称</h5></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3"><div style="height:0.5rem"></div><h5>单价</h5></div>
+                    <div class="col-md-3"><div style="height:0.5rem"></div><h5>数量</h5></div>
+                    <div class="col-md-3"><div style="height:0.5rem"></div><h5>小计</h5></div>                   
+                    <div class="col-md-2"><div style="height:0.5rem"></div><h5>操作</h5></div>
+                </div>          
+            </div>
+            <div class="col-md-10 col-md-offset-1" style="height:2px;background:rgb(245, 245, 245)"></div>
+            <div class="col-md-10 col-md-offset-1 this-good" style="background: #fff;font-size:1.7rem">
+                <div class="col-md-6">
+                    <div class="col-md-1"><div style="height:1rem"></div><div><input class="checkOneGoods" type="checkbox"></div></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2"><img src="gwc/bao.jpg" alt=""></div>
+                    <div class="col-md-5"><div style="height:3rem"></div><a>小米极简都双肩背包市</a></div>
+                </div>
+                <div class="col-md-6 money">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2"><div style="height:2rem"></div><h5>149元</h5></div>
+                    <div class="col-md-4">
+                        <div style="height:2rem"></div>
+                        <button id="jian" class="col-md-2 btn-1">-</button>
+                        <input id="zongshu" class="col-md-6  " type="text" value="1">
+                        <button id="jia" class="col-md-2 btn-2">+</button>
+                    </div>
+                    <div class="col-md-3 money-total"><div style="height:2rem"></div><h5 id="zongjia" class="xj">149</h5></div>                   
+                    <div class="col-md-2"><div style="height:2rem"></div><a id='del'>X</a></div>
+                </div>      
+            </div>   
+            <div class="col-md-10 col-md-offset-1" style="height:1rem;background:rgb(245, 245, 245)"></div> 
+             
+            <div class="col-md-10 col-md-offset-1" style="background: #fff;font-size:1.4rem">
+                <div class="col-md-1">
+                    <div style="height:1.5rem"></div>
+                    <a href="" class="jx-a">继续购物</a>
+                </div>
+                <div class="col-md-6">
+                    <div style="height:1.5rem"></div>
+                    <span class="span-1">共 <span class="span-2"> 1 </span> 件商品,已选择<span class="span-3"> 0 </span>件</span>
+                </div>
+                <div class="col-md-3">
+                    <span class="span-6">合计(不含运费):<span class="span-4">0.00</span><span class="span-5">元</span></span>
+                </div>
+                <div class="col-md-2 btn-3-div">
+                    <button class="btn-3">去结算<tton>
+                </div>          
+            </div>  
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- 底部  -->
+    <div class="container-fluid footerzt" style='padding:0'>
+        
+        <div class='row'>
+            <!-- 底部区域一 -->
+            <div style='padding:0'>
+                <ul>
+                    <li class='col-md-1'></li>
+                    <li class=''>
+                        <div class='col-md-2 footer_li'>
+                            <a href="#" class='footer_zt1'>
+                                <img  src="./public/img/c1.png" alt="" class='footer_tp1'>预约维修服务
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class=''>
+                        <div class='col-md-2 footer_li'>
+                        <a href="#" class='footer_zt1'>
+                            <img  src="./public/img/c2.png" alt="" class='footer_tp1'>
+                            7天无理由退货
+                        </a>
+                        </div>
+                    </li>
+                    <li class=''>
+                        <div class='col-md-2 footer_li'>
+                        <a href="#" class='footer_zt1'>
+                            <img  src="./public/img/c3.png" alt="" class='footer_tp1 img-responsive'>
+                            15天免费换货
+                        </a>
+                        </div>
+                    </li>
+                    <li class=''>
+                        <div class='col-md-2 footer_li'>
+                        <a href="#" class='footer_zt1'>
+                            <img src="./public/img/c4.png" alt="" class='footer_tp1 img-responsive'>满150元包邮
+                        </a>
+                        </div>
+                    </li>
+                    <li class=''>
+                        <div class='col-md-2 footer_li'>
+                        <a href="#" class='footer_zt1'>
+                            <img src="./public/img/c5.png" alt="" class='footer_tp1 img-responsive'>502余家售后网点
+                        </a>
+                        </div>
+                    </li>
+                    <li class='col-md-1'></li>
+                </ul>
+                    
+            </div>
+            
+                
+
+            
+        </div>
+        <hr>
+        <!-- 底部区域二 友情链接 -->
+        <footer class="footer ">
+            <div class="row" style='padding:0'>
+                <div class='col-md-1'></div>
+                <!-- 左边链接 -->
+                <div class='col-md-8' style='padding-left:0'>
+                    <div class="col-md-2 col-xs-5 col-xs-offset-1 col-md-offset-0" style='padding-left:0' style='padding-left:0;'>
+                        <h3 class='footer2_zt1'>帮助中心</h3>
+                        <ul class="list-unstyled ">
+                          <li><a href="" target="_blank" class='footer2_zt2'>账户管理</a></li>
+                          <li><a href="" target="_blank" class='footer2_zt2'>购物指南</a></li>
+                          <li><a href="" target="_blank" class='footer2_zt2'>订单操作</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-5 col-xs-offset-1  col-md-offset-0">
+                        <h3 class='footer2_zt1'>服务支持</h3>
+                        <ul class="list-unstyled ">
+                          <li><a href="" target="_blank" class='footer2_zt2'>售后政策</a></li>
+                          <li><a href="" target="_blank" class='footer2_zt2'>自助服务</a></li>
+                          <li><a href="" target="_blank" class='footer2_zt2'>相关下载</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-5 col-xs-offset-1 col-md-offset-0">
+                        <h3 class='footer2_zt1'>线下门店</h3>
+                        <ul class="list-unstyled ">
+                          <li><a href="" target="_blank" class='footer2_zt2'>小米之家</a></li>
+                          <li><a href="" target="_blank" class='footer2_zt2'>服务网点</a></li>
+                          <li><a href="" target="_blank" class='footer2_zt2'>零售网点</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-5 col-xs-offset-1 col-md-offset-0">
+                        <h3 class='footer2_zt1'>关于小米</h3>
+                        <ul class="list-unstyled ">
+                          <li><a href="" target="_blank" class='footer2_zt2'>了解小米</a></li>
+                          <li><a href="" target="_blank" class='footer2_zt2'>加入小米</a></li>
+                          <li><a href="" target="_blank" class='footer2_zt2'>联系我们</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-5 col-xs-offset-1 col-md-offset-0">
+                        <h3 class='footer2_zt1'>关注我们</h3>
+                        <ul class="list-unstyled ">
+                          <li><a href="" target="_blank" class='footer2_zt2'>新浪微博</a></li>
+                          <li><a href="" target="_blank" class='footer2_zt2'>小米部落</a></li>
+                          <li><a href="" target="_blank" class='footer2_zt2'>官方微信</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-xs-5 col-xs-offset-1 col-md-offset-0">
+                        <h3 class='footer2_zt1'>特色服务</h3>
+                        <ul class="list-unstyled ">
+                          <li><a href="" target="_blank" class='footer2_zt2'>F码通道</a></li>
+                          <li><a href="" target="_blank" class='footer2_zt2'>礼物码</a></li>
+                          <li><a href="" target="_blank" class='footer2_zt2'>防伪查询</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 右边客服 -->
+                <div class='col-md-2' style='text-align:center;'>
+                    <div class="row">
+                        <div class="col-md-12 col-md-10">
+                            <ul class="list-unstyled" style='margin-top:12px'>
+                                <li class='footer2_zt3' style='margin-bottom:5px'>400-100-5678</li>
+                                <li class='footer2_zt2'>周一至周日 9:00-18:00</li>
+                                <li class='footer2_zt2' style='margin-bottom:10px'>(仅收市话费)</li>
+                                <li>
+                                    <button type="button" class="btn btn-default footer2_zt4">24小时在线客服</button>
+                                </li>
+                            </ul>   
+                        </div>
+                    </div>
+                </div>
+                <div class='col-md-1'></div>
+            </div>
+        </footer>
+    <!-- 结局  -->
+    <div class="container-fluid footerzt" style='padding:0;background: #FAFAFA;'>
+        <div class='row' style='margin-top:30px'>
+            <div class='col-md-1'></div>
+            <!-- 左结局 -->
+            
+            <div class='col-md-7 col-sm-10 col-xs-10 ' style='padding-left:0'>
+                <div class='row'>
+                    <div class='col-md-1 col-xs-2' style='padding-left:0'>
+                        <a href=""><img class="img-responsive" src="./image/milogo.png" alt=""></a>
+                    </div>
+                    <div class='col-md-10'>
+                        <ul>
+                            <li class='jz_zt1'>小米商城|MIUI|米聊|多看书城|小米路由器|视频电话|小米天猫店|小米淘宝直营店|小米网盟|小米移动|隐私政策|Select Region</li>
+                            <li class='jz_zt2'>©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号 </li>               
+                            <li class='jz_zt2'>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 右结局 -->
+            <div class='col-md-3 tu'>
+                <div><img class="img-responsive" src="./public/img/a1.png" alt="" style='width:85px;height:28px;'></div>
+                <div><img class="img-responsive" src="./public/img/a2.png" alt=""></div>
+                <div><img class="img-responsive" src="./public/img/a3.png" alt=""></div>
+                <div><img src="./public/img/a4.png" alt=""></div>
+                
+                
+                
+                
+            </div>
+            <div class='col-md-1'></div>
+
+        </div>
+        <div class='xm'>探索黑科技,小米为发烧而生!</div>
+    </div>
+
+
+    </div>
+
+
+
+
+
+
+        <div class='row'>
+
+        </div>
+        <script type="text/javascript">
+        	var che_val = 0;
+        	var che_money = 0;
+        	var jian = $('#jian');
+        	var jia = $('#jia');
+        	
+
+        	jian.click(function(){
+        		var zongshu = parseInt($('#zongshu').val());
+        		$('#zongshu').val((zongshu-1)<=1 ? 1 : (zongshu-1));
+        		putZongJia();
+        	})
+
+        	jia.click(function(){
+        		var zongshu =parseInt($('#zongshu').val());
+        		$('#zongshu').val((zongshu+1)<=10 ? (zongshu+1) : 10);
+        		putZongJia();
+        	})
+
+        	function putZongJia(){
+        		var zongshu = parseInt($('#zongshu').val());
+        		$('#zongjia').html(zongshu*149);
+        	}
+
+        	$('#del').click(function(){
+        		$(this).parents('.this-good').css('display','none');
+        	})
+
+        	$('.checkAllGoods').click(function(){
+        		if($(this).prop('checked')){
+        			che_val = $('.checkOneGoods').length;
+        			che_money = 0;
+        			for (var i = $('.xj').length - 1; i >= 0; i--) {
+        				che_money += parseInt($('.xj:eq('+i+')').html());
+        			}
+	        		$('.checkOneGoods').attr('checked',status);
+	        	}else{
+	        		che_val = 0;
+	        		che_money = 0;
+	        		$('.checkOneGoods').removeAttr('checked');
+	        	}
+
+	        	
+	        	getAll(che_val, che_money)
+        	})
+
+        	$('.checkOneGoods').click(function () {
+        		var this_money = parseInt($(this).parents('.this-good').children('.money').children('.money-total').children('.xj').html());
+
+        		if($(this).prop('checked')){
+        			getAll(che_val+=1, che_money+=this_money);
+	        		$(this).attr('checked',status);
+	        	}else{
+	        		getAll(che_val-=1, che_money-=this_money)
+	        		$(this).removeAttr('checked');
+	        	}
+        	})
+
+        	getAll()
+
+        	function getAll(now=che_val, money=che_money) {
+        		var all = $('.checkOneGoods').length;
+        		$(".span-2").html(all)
+        		$(".span-3").html(now)
+
+        		$(".span-4").html(money)
+        	}
+
+        </script> 
+    
+</body>
+</html>
+</body>
+</html>

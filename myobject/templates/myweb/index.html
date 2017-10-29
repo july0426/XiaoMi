@@ -1,0 +1,349 @@
+{% extends 'myweb/base.html' %}
+{% load static from staticfiles %}
+{% block mycss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myweb/css/zhuye.css' %}">
+{% endblock %}
+{% block mymain %}
+		<!-- 推荐栏 -->
+		<div class='row lunbo'>
+			<div class='col-md-10 col-sm-10 col-sm-offset-1 col-xs-12   col-md-offset-1' style='padding:0'>
+				<!-- 竖向导航栏 -->
+				<div class='col-md-2 col-sm-3 col-xs-12 tj-dh '>	
+					<ul class='tj-dh1'>
+						<li class="xianshi1"><a href="xiaomi6.html">手机 电话卡</a><img src="{% static 'myweb/image/you.png' %}"></li>
+						<li class="xianshi1"><a href="max2.html">笔记本 平板</a><img src="{% static 'myweb/image/you.png' %}"></li>
+						<li class="xianshi1"><a href="#">电视 盒子</a><img src="{% static 'myweb/image/you.png' %}"></li>
+						<li class="xianshi1"><a href="#">路由器 智能硬件</a><img src="{% static 'myweb/image/you.png' %}"></li>
+						<li class="xianshi1"><a href="#">移动电源 电池 插线板</a><img src="{% static 'myweb/image/you.png' %}"></li>
+						<li class="xianshi1"><a href="#">耳机 音箱</a><img src="{% static 'myweb/image/you.png' %}"></li>
+						<li class="xianshi1"><a href="#">保护套 贴膜</a><img src="{% static 'myweb/image/you.png' %}"></li>
+						<li class="xianshi1"><a href="#">线材 支架 存储卡</a><img src="{% static 'myweb/image/you.png' %}"></li>
+						<li class="xianshi1"><a href="#">箱包 服饰 鞋 眼镜</a><img src="{% static 'myweb/image/you.png' %}"></li>
+						<li class="xianshi1"><a href="#">米兔 生活周边</a><img src="{% static 'myweb/image/you.png' %}"></li>
+
+					</ul>		
+				</div>
+				<!-- 轮播图 -->
+				<div class='col-md-10 col-sm-9 col-xs-12 tj-lb' data-ride="carousel">
+					<div id="myCarousel" class="carousel slide">
+					    <ol class="carousel-indicators" data-parent="5000">
+					        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					        <li data-target="#myCarousel" data-slide-to="1"></li>
+					        <li data-target="#myCarousel" data-slide-to="2"></li>
+					        <li data-target="#myCarousel" data-slide-to="3"></li>
+					        <li data-target="#myCarousel" data-slide-to="4"></li>
+					        <li data-target="#myCarousel" data-slide-to="5"></li>
+					    </ol>   
+					    <div class="carousel-inner" data-parent="5000">
+					        <div class="item active">
+					            <img src="{% static 'myweb/image/lb4.jpg' %}" alt="First slide" style='height: 410px'>
+					        </div>
+					        <div class="item">
+					            <img src="{% static 'myweb/image/lb2.jpg' %}" alt="Second slide" style='height: 410px;width:1200px;'>
+					        </div>
+					        <div class="item ">
+					            <img src="{% static 'myweb/image/lb3.jpg' %}" alt="Third slide" style='height: 410px;width:1200px;'>
+					        </div>
+					        <div class="item " >
+					            <img src="{% static 'myweb/image/bijiben.jpg' %}" alt="Four slide" style='height: 410px;width:1200px;'>
+					        </div>
+					        <div class="item " >
+					            <img src="{% static 'myweb/image/dianshi.jpg' %}" alt="Five slide" style='height: 410px;width:1200px;'>
+					        </div>
+					        <div class="item ">
+					            <img src="{% static 'myweb/image/shouhuan.jpg' %}" alt="Six slide" style='height: 410px;width:1200px;'>
+					        </div>
+					    </div>
+					    <a class="carousel-control left" href="#myCarousel" 
+					        data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span>
+					    </a>
+					    <a class="carousel-control right" href="#myCarousel" 
+					        data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span>
+					    </a>
+					</div>						
+				</div>
+			</div>			
+		</div>
+		<br>
+		<!-- 推荐栏2 -->
+		<div class='row'>
+			<div class='col-md-1 col-sm-1'></div>
+			<div class='col-md-10 col-sm-10 col-xs-12' style='padding:0'>
+
+				<!-- 选购手机  -->
+				<div class='col-md-2 col-sm-12   tj2-zs yc visible-lg'>				
+					<div class='col-md-4 col-sm-4 col-xs-4 tj2-zs1'><a class="yc" href="#"><img class="img-responsive" src="{% static 'myweb/image/a1.png' %}"></a></div>
+					<div class='col-md-4 col-sm-4 col-xs-4 tj2-zs1'><a class="yc" href="#"><img class="img-responsive" src="{% static 'myweb/image/a2.png' %}"></a></div>
+					<div class='col-md-4 col-sm-4 col-xs-4 tj2-zs1'><a class="yc" href="#"><img class="img-responsive" src="{% static 'myweb/image/a3.png' %}"></a></div>				
+					<div class='col-md-4 col-sm-4 col-xs-4 tj2-zs1'><a class="yc" href="#"><img class="img-responsive" src="{% static 'myweb/image/a4.png' %}"></a></div>
+					<div class='col-md-4 col-sm-4 col-xs-4 tj2-zs1'><a class="yc" href="#"><img class="img-responsive" src="{% static 'myweb/image/a5.png' %}"></a></div>
+					<div class='col-md-4 col-sm-4 col-xs-4 tj2-zs1'><a class="yc" href="#"><img class="img-responsive" src="{% static 'myweb/image/a6.png' %}"></a></div>					
+				</div>
+				<!-- 轮播图下面的三个推荐  -->
+				<div class='col-md-9 col-sm-10 col-xs-12 yc1'>
+					<div class='tj2-tp col-md-4 col-sm-4 col-xs-4'><a href="#"><img class="img-responsive" src="{% static 'myweb/image/tj1.png' %}" width="100%"></a></div>
+					<div class='tj2-tp col-md-4 col-sm-4 col-xs-4'><a href="#"><img class="img-responsive" src="{% static 'myweb/image/tj2.png' %}" width="100%"></a></div>
+					<div class='tj2-tp col-md-4 col-sm-4 col-xs-4 hidden-xs'><a href="#"><img class="img-responsive" src="{% static 'myweb/image/tj3.png' %}" width="100%"></a></div>
+				</div>				 
+			</div>
+			<div class='col-md-1 col-sm-1'></div>			
+		</div>
+		<br>
+		<div class="row" >
+			<!-- 家电标题栏 -->
+			<div class='col-md-10 col-xs-10 col-xs-offset-1 col-md-offset-1 jd jdbt' style='padding-right:20px;padding-left:20px;background: #f5f5f5;'>
+				<h3 class='jd-1'>热销商品</h3>
+				<div style='float:right'>
+					<button class='mx_1'><</button>
+					<button class='mx_2'>></button>
+				</div>
+			</div>
+		</div>
+		<div class='row' >
+			<!-- 家电展示 -->
+			
+				<!-- 商品 -->
+				
+				<div class='col-md-10 col-md-offset-1 col-xs-12 ' style='padding-right:10px;padding-left:10px;padding-top:10px;background: #f5f5f5;'>
+					<ul class= "hidden mxdp_1">
+						{% for stu in alllist %}
+						<li>
+							<a href="{% url 'detail' stu.id %} ">
+								<div class="col-md-3  jdsp jdsp2">
+				   		    		<div class="thumbnail">
+						   		      	<img class="img-responsive" src="/static/goods/s_{{ stu.picname }}" alt="...">
+						   		      	<div class="caption">
+							   		        <p class='jd-zt1'><a class='jd-zt1'>{{ stu.goods }}</a></p>
+							   		        <!-- <p class='jd-zt2'>8月17日-8月18日特惠,直降400元</p> -->
+						   		      		<p class='jd-zt3'>{{ stu.price }}元<del class='jd-zt4'>{{ stu.price }}元</del></p>
+						   		      	</div>
+				   		    		</div>
+				   		 		</div>
+			   		 		</a>
+						</li>
+						{% endfor %}
+					</ul>
+					<ul class= "mxdp_2">
+						{% for stu in alllist1 %}
+						<li>
+							<a href="{% url 'detail' stu.id %} ">
+								<div class="col-md-3  jdsp jdsp2">
+				   		    		<div class="thumbnail">
+						   		      	<img class="img-responsive" src="/static/goods/s_{{ stu.picname }}" alt="...">
+						   		      	<div class="caption">
+							   		        <p class='jd-zt1'><a class='jd-zt1'>{{ stu.goods }}</a></p>
+							   		        <!-- <p class='jd-zt2'>8月17日-8月18日特惠,直降400元</p> -->
+						   		      		<p class='jd-zt3'>{{ stu.price }}元<del class='jd-zt4'>{{ stu.price }}元</del></p>
+						   		      	</div>
+				   		    		</div>
+				   		 		</div>
+				   		 	</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row" >
+			<!-- 家电标题栏 -->
+			<div class='col-md-10 col-xs-10 col-xs-offset-1 col-md-offset-1 jd jdbt' style='padding-right:20px;padding-left:20px;background: #f5f5f5;'>
+				<h3 class='jd-1'>最新上架</h3>
+				
+			</div>
+		</div>
+		<div class='row' >
+			<!-- 家电展示 -->
+			
+				<!-- 商品 -->
+				
+				<div class='col-md-10 col-md-offset-1 col-xs-12' style='padding-right:10px;padding-left:10px;padding-top:10px;background: #f5f5f5;'>
+					<ul>
+						{% for stu in zuixinlist %}
+						<li>
+							<a href="{% url 'detail' stu.id %} ">
+								<div class="col-md-3  jdsp jdsp2">
+				   		    		<div class="thumbnail">
+						   		      	<img class="img-responsive" src="/static/goods/s_{{ stu.picname }}" alt="...">
+						   		      	<div class="caption">
+							   		        <p class='jd-zt1'><a class='jd-zt1'>{{ stu.goods }}</a></p>
+							   		        <!-- <p class='jd-zt2'>8月17日-8月18日特惠,直降400元</p> -->
+						   		      		<p class='jd-zt3'>{{ stu.price }}元<del class='jd-zt4'>{{ stu.price }}元</del></p>
+						   		      	</div>
+				   		    		</div>
+				   		 		</div>
+			   		 		</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row" >
+			<!-- 家电标题栏 -->
+			<div class='col-md-10 col-xs-10 col-xs-offset-1 col-md-offset-1 jd jdbt' style='padding-right:20px;padding-left:20px;background: #f5f5f5;'>
+				<h3 class='jd-1'><a href="{% url 'index'%}">全部</a></h3>
+				<div class='jd-2'>
+					<ul class="jd-li" >
+					{% for type in tlist %}
+						<li><a href="{% url 'index' type.id %}">{{ type.name }}</a></li>
+					{%endfor%}	
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class='row' >
+			<!-- 家电展示 -->
+			
+				<!-- 商品 -->
+				
+				<div class='col-md-10 col-md-offset-1 col-xs-12' style='padding-right:10px;padding-left:10px;padding-top:10px;background: #f5f5f5;'>
+					<ul>
+						{% for stu in stulist %}
+						<li>
+							<a href="{% url 'detail' stu.id %} ">
+								<div class="col-md-3  jdsp jdsp2">
+				   		    		<div class="thumbnail">
+						   		      	<img class="img-responsive" src="/static/goods/s_{{ stu.picname }}" alt="...">
+						   		      	<div class="caption">
+							   		        <p class='jd-zt1'><a class='jd-zt1'>{{ stu.goods }}</a></p>
+							   		        <!-- <p class='jd-zt2'>8月17日-8月18日特惠,直降400元</p> -->
+						   		      		<p class='jd-zt3'>{{ stu.price }}元<del class='jd-zt4'>{{ stu.price }}元</del></p>
+						   		      	</div>
+				   		    		</div>
+				   		 		</div>
+				   		 	</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	<!-- </div> -->
+	<br>
+			<!-- 明星单品 -->
+			<!-- 标题 -->
+		
+	<br><br>
+	<!-- 下边内容 -->
+	<!-- <div class="container xnr" > -->
+	<br><br>
+		
+	<br>
+{% endblock %}
+	<!-- 鼠标悬停后显示的页面 -->
+		<!-- 页面一 -->
+		<!-- <div class="container-fluid xty hidden-xs">
+			<div class="row " >
+				<ul>
+					<li class='goods col-md-2 col-xs-6 col-sm-6 col-md-offset-1'>
+						<a href=""><img src="{% static 'myweb/public/img/ping.jpg' %}" alt=""></a><br>
+						<a href="">小米平板3</a>
+					</li>
+					<li class='goods col-md-2 col-xs-6 col-sm-6'>
+						<a href=""><img src="{% static 'myweb/public/img/bijiben.jpg' %}" alt=""></a><br>
+						<a href="">笔记本13.3英寸</a>
+					</li>
+					<li class='goods col-md-2 col-xs-6 col-sm-6'>
+						<a href=""><img src="{% static 'myweb/public/img/erji.jpg' %}" alt=""></a><br>
+						<a href="">小米耳机</a>
+					</li>
+					<li class='goods col-md-2 col-xs-6 col-sm-6'>
+						<a href=""><img src="{% static 'myweb/public/img/d11.jpg' %}" alt=""></a><br>
+						<a href="">米兔</a>
+					</li>
+					<li class='goods col-md-2 col-xs-6 col-sm-6'>
+						<a href=""><img src="{% static 'myweb/public/img/xiang.jpg' %}" alt=""></a><br>
+						<a href="">小米相机</a>
+					</li>
+					<li class='col-md-1'></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 页面二 -->
+		<!-- <div class="container-fluid xty1 hidden-xs">
+			<div class="row " >
+				<ul>
+					<li class='good col-md-12 col-xs-6 col-sm-6 '>
+						<a href=""><img src="{% static 'myweb/public/img/d6.jpg' %}" alt=""></a><br>
+						<a href="">小米手表</a>
+					</li>
+					
+					
+					<li class='good col-md-12 col-xs-6 col-sm-6'>
+						<a href=""><img src="{% static 'myweb/public/img/d7.jpg' %}" alt=""></a><br>
+						<a href="">小米电风扇</a>
+					</li>
+			
+					<li class='good col-md-12 col-xs-12 col-sm-6'>
+						<a href=""><img src="{% static 'myweb/public/img/d9.jpg' %}" alt=""></a><br>
+						<a href="">小米点灯</a>
+					</li>
+					
+					<li class='good col-md-12 col-xs-12 col-sm-6'>
+						<a href=""><img src="{% static 'myweb/public/img/d8.jpg' %}" alt=""></a><br>
+						<a href="">小米收音机</a>
+					</li>
+					<li class='good col-md-12 col-xs-12 col-sm-6 '>
+						<a href=""><img src="{% static 'myweb/public/img/d6.jpg' %}" alt=""></a><br>
+						<a href="">小米手表</a>
+					</li>					
+					<li class='good col-md-12 col-xs-12 col-sm-6'>
+						<a href=""><img src="{% static 'myweb/public/img/d7.jpg' %}" alt=""></a><br>
+						<a href="">小米电风扇</a>
+					</li>			
+					<li class='good col-md-12 col-xs-12 col-sm-6'>
+						<a href=""><img src="{% static 'myweb/public/img/d9.jpg' %}" alt=""></a><br>
+						<a href="">小米点灯</a>
+					</li>
+					
+					<li class='good col-md-12 col-xs-12 col-sm-6'>
+						<a href=""><img src="{% static 'myweb/public/img/d8.jpg' %}" alt=""></a><br>
+						<a href="">小米收音机</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	  </div>
+	  -->
+	
+
+{% block myjs %}
+	<!-- 事件 -->
+	<script type="text/javascript">
+		
+
+
+		$(window).mousemove(function(e) {
+			var x = e.pageX;
+			var y = e.pageY;
+			console.log(x,y)
+
+			if(x>120&x<340&y<1450&y>130){
+				
+				$('.xty').css('display','block')
+			}else{
+				$('.xty').css('display','none')
+			}
+			/* Act on the event */
+		});
+		$('.xty').mouseout(function(){
+			$('.xty').css('display','none')
+		})
+		$('.xianshi1').mouseover(function(){
+			$('.xty1').css('display','block')
+		})
+		$('.xianshi1').mouseout(function(){
+			$('.xty1').css('display','none')
+		})
+
+		$('.mx_2').click(function(){
+			$('.mxdp_1').removeClass('hidden').siblings().addClass('hidden')
+		})
+		
+		$('.mx_1').click(function(){
+			$('.mxdp_2').removeClass('hidden').siblings().addClass('hidden');
+		})
+
+	</script>
+{% endblock %}
+	

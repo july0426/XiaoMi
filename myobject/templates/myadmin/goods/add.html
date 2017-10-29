@@ -1,0 +1,155 @@
+{% extends 'myadmin/base.html' %}
+{% block mymain %}
+<div class="span9">
+	<h3 style="margin-left:30% ;">
+		添加商品
+	</h3>
+	<form id="edit-profile" class="form-horizontal" action="{% url 'myadmin_goodsinsert' %}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+		<fieldset >
+			<div class="control-group">
+				<label class="control-label" for="input01">商品类别</label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<select name = 'typeid'>
+            		<option></option>
+        		</select>
+			</div>
+			<br>
+			<div class="control-group">
+				<label class="control-label" for="input01">商品名称</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="goods" />
+				</div>
+			</div>		
+			<div class="control-group">
+				<label class="control-label" for="input01">生产厂家</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="company" />
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label" for="input01">单价</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="price"/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">添加图片</label>
+				<div class="controls">
+					<input type="file" class="input-xlarge" id="upload" value="" name="pic"/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">预览图片</label>
+				
+					<img src="" id = 'preview' alt="" width="150px" style = "margin-left:10%;">
+				
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">状态</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="state" value="1" /> 新添加 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="state" value="2" /> 在售	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="state" value="3" /> 下架	
+			</div>	
+			<div class="control-group">
+				<label class="control-label" for="input01">库存量</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="store"/>
+				</div>
+			</div>	
+			<div class="control-group">
+				<label class="control-label" for="input01">简介</label>
+				<div class="controls">
+                    <textarea cols="40" style="width:270px" rows="10" name="descr">
+                    </textarea>
+                </div>
+			</div>							
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">保存</button> 
+				<button class="btn" type="reset">重置</button>
+			</div>
+			
+			
+		</fieldset>
+	</form>
+</div>
+
+			
+{% endblock %}
+{% block myjs %}
+
+<script type="text/javascript">
+
+
+
+        //jQuery入口程序
+    $(function(){
+        $.ajax({
+            url: "{% url 'myadmin_goodsadds' 0 %}",
+            type: 'get',
+            data: {},
+            dataType:'json',
+            success:function(res){
+                var data = res.data;
+                for(var i=0;i<data.length;i++){
+                    $('<option value="'+data[i].id+'">'+data[i].name+'</option>').appendTo('select:last')
+                    //$('select:last').append('<option value="'+data[i].id+'">'+data[i].name+'</option>'); 
+                }
+            },
+            error:function(){
+            	alert("ajax加载失败！");
+            }
+        });
+        
+        //获取最后一个下拉框并添加选中事件
+        $("select").live('change',function(){
+            //获取选中的id号
+            var id = $(this).val();
+            $(this).nextAll().remove();
+            $.ajax({
+                url: "/myadmin/goodsadds/"+id,
+                type: 'get',
+                data: {},
+                dataType:'json',
+                success:function(res){
+                    if(res.data.length<1)
+                        return;
+                    var data = res.data;
+                    var select = $("<select></select>")
+                    for(var i=0;i<data.length;i++){
+                        $('<option value="'+data[i].id+'">'+data[i].name+'</option>').appendTo(select)
+                        //$('select:last').append('<option value="'+data[i].id+'">'+data[i].name+'</option>'); 
+                    }
+                    $("select:last").after(select);
+                    $('select').removeAttr('name');
+                    $("select:last").attr('name','typeid');
+                }
+            });
+        });
+
+    });
+	$("#upload").live('change',function(){
+		var f = document.getElementById('upload').files[0];
+		console.log(f);
+		var src = window.URL.createObjectURL(f);
+		console.log(src);
+		document.getElementById('preview').src = src;
+		// $.ajax({
+  //               url: "/myadmin/goodsaddss",
+  //               type: 'get',
+  //               data: {},
+  //               dataType:'json',
+  //               success:function(res){
+  //               	var data = res;
+  //               	console.log(data);
+  //                   $('img').attr('src',data);
+  //                   console.log($('img'))
+  //                   },
+  //               });
+
+	 });
+
+</script>
+{% endblock %}

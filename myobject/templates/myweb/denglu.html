@@ -1,0 +1,73 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>小米商城登录页面</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'myweb/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'myweb/js/jquery-1.12.4.min.js' %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'myweb/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'myweb/css/denglu.css' %}">
+</head>
+<body>
+    <script type="text/javascript" src="{% static 'myweb/public/js/jquery-1.12.4.min.js'%]"></script>
+    <!-- 背景图片 -->
+    <div class="container-fluid">
+        <div class="row"><img src="{% static 'myweb/denglu/denglu.png'%}" class="img-responsive beijing" alt=""></div>
+    </div>
+    <!-- 登录注册页面 -->
+    <div class="container-fluid">
+        <div class="denglu">           
+            <form  action="{%url 'dologin'%}" method="post" role="form" class="dl-form" enctype="multipart/form-data"  >
+            {% csrf_token %}
+                <div class="a-div">
+                    <a href="" class="li-1">账号登录</a>
+                    <span>|</span>
+                    <a href="" class="li-2">扫码登录</a>
+                </div>               
+                <input name="username" class="int1" type="text" id="int1" placeholder="邮箱/手机号码/小米账号" value="">
+                <input name="passwd" class="int2" type="password" id="int2" placeholder="密码" value=""> <h3></h3>
+                <span style="margin-left:50px;margin-right:50px;color:black">输入图形验证码</span>               
+                {{info}}
+                <img name='code' src="{% url 'verify' %}" onclick="this.src='{% url 'verify' %}?sn='+Math.random()" style="margin-bottom:5px;margin-left:30px"/>
+                <input type="text" name="code1" class="int2"  />
+                                           
+                <button class="btn3" type="submit">立即登录</button>
+                <span id='span-a'></span>
+                <span id='span-b'></span>
+                <div class="a-div1">
+                    <a href="{% url 'zhuce' %}" class="li-11">注册小米账号</a>
+                    <span>|</span>
+                    <a href="" class="li-21">忘记密码?</a>
+                </div>
+                <div id="odiv">
+                    <div id="div1"></div>
+                    <div id="div3">其他方式登录</div>
+                    <div id="div2"></div>
+                </div><br>
+                <div class="waibu">
+                    <ul class="ul3">
+                        <li class="li31"><a href=""><img src="denglu/qq.png" alt=""></a></li>
+                        <li class="li32"><a href=""><img src="denglu/weibo.png" alt=""></a></li>
+                        <li class="li33"><a href=""><img src="denglu/zfb.png" alt=""></a></li>
+                        <li class="li34"><a href=""><img src="denglu/weixin.png" alt=""></a></li>
+                    </ul>
+                </div>               
+            </form>
+        </div>       
+    </div>
+
+       
+    <!-- 登录验证事件-->
+ 
+   
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en"><!--<![endif]--> 
+	<head>
+		<meta charset="utf-8">
+		<title>小米商城后台管理</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="{% static 'myadmin/css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'myadmin/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+		<link href="{% static 'myadmin/css/site.css' %}" rel="stylesheet">
+	</head>
+	<body>
+		<div id="login-page" class="container">
+			<h1>小米商城后台管理</h1>
+			<form id="login-form" class="well" action="{% url 'myadmin_dologin' %}" method="post">
+			{% csrf_token %}
+			账&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;:&nbsp;<input type="text" class="span2" name= "username" placeholder="输入账号" /><br />
+			密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;:&nbsp;<input type="password" class="span2" name = "passwd" placeholder="输入密码" /><br />
+			验证码&nbsp;:&nbsp;<input type="text" name="code" class="span2" style="width:48px;"  />
+			<img name='code' src="{% url 'verify' %}" onclick="this.src='{% url 'verify' %}?sn='+Math.random()" style="margin-bottom:10px;"/>
+			<br>
+			<label class="checkbox"> <input type="checkbox" /> Remember me </label>
+			<button type="submit" class="btn btn-primary">Sign in</button>
+			<button type="submit" class="btn">Forgot Password</button>
+			<br/>
+			<h4 style = "color:red">{{ info }}</h4>
+		</form>	
+		
+		</div>
+		<script type="text/javascript" src="/static/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript">
+    	$(function(){
+        	$('#verifycodeChange').css('cursor','pointer').click(function() {
+            $('#verifycode').attr('src',$('#verifycode').attr('src')+1)
+        	});
+    	});
+		</script>
+		
+		
+		<script src="{% static 'myadmin/js/jquery.min.js' %}"></script>
+		<script src="{% static 'myadmin/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'myadmin/js/site.js' %}"></script>
+	</body>
+</html>

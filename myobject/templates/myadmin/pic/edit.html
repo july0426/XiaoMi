@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>相册信息管理</title>
+    </head>
+    <body>
+        <center>
+            {% include "myadmin/pic/menu.html" %}
+            <h3>修改相册信息</h3>
+            <form action="{% url 'myadmin_updatepic' %}" enctype="multipart/form-data" method="post">
+            <input type="hidden" name="id" value="{{ pic.id}}"/>
+            <input type="hidden" name="oldpicname" value="{{ pic.picname}}"/>
+            {% csrf_token %}
+            <table width="320" border="0">
+               <tr>
+                 <td>姓名：</td>
+                 <td><input type="text" name="name" value="{{ pic.name }}"/></td>
+               </tr>
+               <tr>
+                 <td>年龄：</td>
+                 <td><input type="text" name="age"  value="{{ pic.age }}"/></td>
+               </tr>
+               <tr>
+                 <td>图片：</td>
+                 <td><input type="file" name="mypic"/></td>
+               </tr>
+               <tr>
+                 <td colspan="2" align="center">
+                    <input type="submit" value="编辑"/>
+                    <input type="reset" value="重置"/>
+                 </td>
+               </tr>
+            </table>
+            </form>
+            <br/><br/>
+            <img src="/static/pic/{{ pic.picname}}" width="300"/>
+        </center>
+    </body>
+</html>

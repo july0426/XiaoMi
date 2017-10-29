@@ -1,0 +1,50 @@
+{% extends 'myadmin/base.html' %}
+{% block mymain %}
+<div class="span9">
+	<h3>
+		添加详情
+	</h3>
+	<form id="edit-profile" class="form-horizontal" action="{% url 'myadmin_usersinsert' %}" method="post" enctype="multipart/form-data"
+>
+        {% csrf_token %}
+		<fieldset>
+			<div class="control-group">
+				<label class="control-label" for="input01">订单ID号</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name='username'/>
+			</div>
+			<br>
+			<div class="control-group">
+				<label class="control-label" for="input01">商品ID号</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="name" />
+				</div>
+			</div>		
+			<div class="control-group">
+				<label class="control-label" for="input01">商品名称</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="passwd" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">单价</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="passwd2" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">数量</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="address"/>
+				</div>
+			</div>							
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">保存</button> 
+				<button class="btn" type="reset">重置</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+			
+{% endblock %}

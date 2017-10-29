@@ -1,0 +1,488 @@
+{% extends "myweb/base.html" %}
+{% load static from staticfiles %}
+{%block block_js%}
+
+<!-- <script type="text/javascript" src="{% static 'myweb/public/js/5.js' %}"></script> -->
+{%endblock%}
+{%block mycss%}
+<link rel="stylesheet" type="text/css" href="{% static 'myweb/css/5.css' %}">
+{%endblock%}
+{%block mymain%}
+    <!-- 主体 -->
+    <div class="container" style="background: rgb(245, 245, 245);height:300px;">
+        <div class="col-md-12 hidden-xs" style="height:4rem"></div>
+        
+        <form action="{% url 'dingdan' %}" method="post" enctype="multipart/form-data" >
+            <div class="row">
+            {% csrf_token %}
+                <div class="col-md-12  col-xs-12 hidden-xs" style="background: #fff;font-size:1.4rem">
+                    <div class="col-md-6 ">
+                        <div class="col-md-1 col-xs-1">
+                            <input name="checkAll" type="checkbox" class="checkAll" onclick="func(1)" value = '3'>
+                        </div>
+                        <div class="col-md-3 col-xs-2">
+                            <div style="height:0.5rem"></div>
+                            <h5>全选</h5>
+                        </div>
+                        <div class="col-md-4 col-xs-2">
+                            <div style="height:0.5rem"></div>
+                            <h5>商品名称</h5>
+                        </div>
+                        <div class="col-md-4 col-xs-2">
+                            <div style="height:0.5rem"></div>
+                            <h5>&nbsp;&nbsp;&nbsp;&nbsp;商品图片</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="col-md-1 hidden-xs"></div>
+                        <div class="col-md-3 col-xs-2"><div style="height:0.5rem"></div><h5>单价</h5></div>
+                        <div class="col-md-3 col-xs-2"><div style="height:0.5rem"></div><h5>数量</h5></div>
+                        <div class="col-md-3 col-xs-2"><div style="height:0.5rem"></div><h5>小计</h5></div>                   
+                        <div class="col-md-2 col-xs-1"><div style="height:0.5rem"></div><h5>操作</h5></div>
+                    </div>          
+                </div>
+                <div class="col-md-12  hidden-xs" style="height:2px;background:rgb(245, 245, 245)"></div>
+                <!-- 商品 -->
+                <div class="col-md-7"></div>
+                <span class='info col-md-4 ' style="font-size:20px;color:red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{info}}</span>
+                {%for shop in request.session.shoplist.values %}
+                <div class="col-md-12  this-good " style="background: #fff;font-size:1.7rem">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="col-md-1 col-xs-1">
+                            <div style="height:1rem" class="hidden-xs"></div>
+                            <div class="niu1">
+                                <input name="check" type="checkbox" class="check" >
+                                <input type="hidden" disabled="true" name = 'id' value="{{shop.id}}">
+                            </div>
+                        </div>
+                        <div class="col-md-1 hidden-xs"></div>
+                        <div class="col-md-2 col-xs-4"><img src="{% static '/myweb/gwc/a3.jpg' %}" alt=""></div>
+                        <div class="col-md-4 col-xs-6 niu">
+                            <div style="height:3rem" class="hidden-xs"></div>
+                            <a>{{shop.goods}}</a>
+                            
+                        </div>
+                        <div class="col-md-1 col-xs-6 niu">
+                           <a href="{% url 'detail' shop.id %}"><img src="/static/goods/s_{{ shop.picname }}" ></a>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6 money col-xs-12 jiaqian">
+                        <div class="col-md-1 hidden-xs"></div>
+                        <div class="col-md-2 col-xs-3">
+                            <div style="height:2rem" class="hidden-xs danjia"></div>
+                            <h5 class="price">{{shop.price}}元</h5>
+                        </div>
+                        <div class="col-md-4 col-xs-5" >
+                            <div style="height:2rem" class="hidden-xs"></div>
+                            
+                            <button type="button" class="col-md-2 btn-1 col-xs-2 jian" onclick="window.location='{% url 'gwcchange1' %}?sid={{shop.id}}&m={{shop.m}}'" >-</button>
+                                                  
+                           
+                            <input class="col-md-6 col-xs-2 zongshu" type="text" value="{{shop.m}}" name="m">
+                            
+                            
+                            <button type="button" class="col-md-2 btn-2 col-xs-2 jia" onclick="window.location='{% url 'gwcchange' %}?sid={{shop.id}}&m={{shop.m}}'" >+</button>
+                            
+                        </div>
+                        <div class="col-md-3 col-xs-2 money-total">
+                            <div style="height:2rem" class="hidden-xs"></div>
+                            <h5 id="xiaoji" class="xiaoji" name='xiaoji'>{% widthratio shop.price 1 shop.m %}</h5>元
+                        </div>                   
+                        <div class="col-md-2 col-xs-1 del-div">
+                            <div style="height:2rem " class="hidden-xs"></div>
+                            <a href="{% url 'gwcdel' shop.id%}">X</a>
+                        </div>
+                    </div>      
+                </div>
+                
+                {%endfor%}
+                <!-- 商品 -->
+                
+                <div class="col-md-12 hidden-xs" style="height:1rem;background:rgb(245, 245, 245)"></div> 
+                <div style="height:0.5rem" class="visible-xs"></div>        
+                <div class="col-md-12" style="background: #fff;font-size:1.4rem">
+                    <div class="col-md-1 col-xs-3">
+                        <div style="height:1.5rem" class="hidden-xs"></div>
+                        <a href="{% url 'list'%}" class="jx-a">继续购物</a>
+                    </div>
+                    <div class="col-md-6 col-xs-4">
+                        <div style="height:1.5rem"  class="hidden-xs "></div>
+                        <span class="span-1">共 <span class="span-2 jianshu">  </span> 件商品
+                        
+                        <div class="col-md-1 col-xs-1" style = "padding:0px;margin:0">
+                            <input name="checknot" type="checkbox" onclick="func(3)" style = "padding:0px;margin:0">
+                        </div>
+                        <div class="col-md-2 col-xs-2 " style = "padding:0px;margin:0">
+                            <div style="height:0.5rem"></div>
+                            <h5  style = "padding:0px;margin:0">反选</h5>
+                        </div>
+
+                        <button type= "button" syule = "margin-left:20px" onclick="window.location='{% url 'gwcclear' %}'">清空购物车</button>
+                    </div>
+                    <div class="col-md-3 col-xs-5">
+                        <span class="span-6">合计(不含运费):
+                            <input type="text" disabled class=" heji" style="width:80px" name="total">
+                            <input type="hidden"  class=" heji" style="width:80px" name="total">
+                            <span class="span-5">元</span>
+                        </span>
+                    </div>
+                    <div class="col-md-2 btn-3-div col-xs-12">
+                        <button class="btn-3" type="submit" >去结算</button>
+                        
+                    </div>          
+                </div>  
+            </div>
+
+        </form>
+    </div>
+    <div class="container hidden-xs" style="background: rgb(245, 245, 245);">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-3 "><div style="height:3.8rem"></div><div class="h2-div1"></div></div>
+                <div class="col-md-5 "><h2 class="mm">  购买购物车中商品的人还买了</h2></div>
+                <div class="col-md-3 "><div style="height:3.8rem"></div><div class="h2-div2"></div></div>               
+            </div>
+        </div>
+    </div>
+    <!-- 推荐商品 -->
+    <div class="container" style="background: rgb(245, 245, 245);">
+        <div class="row col-md-12 hidden-xs">
+            <ul>
+                <li class='col-md-1'></li>
+                <li class='goods col-md-3 col-xs-6 col-sm-6 col-md-offset-1'>
+                    <a href=""><img src="{% static '/myweb/gwc/2.jpg' %}" alt=""></a><br>
+                    <a href="">小米POLO衫</a>
+                    <div></div>
+                    <a href="">149元</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <button class="col-md-6">加入购物车</button>
+                </li>
+                <li class='goods col-md-3 col-xs-6 col-sm-6'>
+                    <a href=""><img src="{% static '/myweb/gwc/3.jpg' %}" alt=""></a><br>
+                    <a href="">小米T恤</a>
+                    <div></div>
+                    <a href="">99元</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <button class="col-md-6">加入购物车</button>
+                </li>
+                <li class='goods col-md-3 col-xs-6 col-sm-6'>
+                    <a href=""><img src="{% static '/myweb/gwc/4.jpg' %}" alt=""></a><br>
+                    <a href="">小米T恤</a>
+                    <div></div>
+                    <a href="">99元</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <button class="col-md-6">加入购物车</button>
+                </li>
+                <li class='col-md-1'></li>
+                <li class='goods col-md-3 col-xs-6 col-sm-6'>
+                    <a href=""><img src="{% static '/myweb/gwc/5.jpg' %}" alt=""></a><br>
+                    <a href="">小米胸针</a>
+                    <div></div>
+                    <a href="">39元</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <button class="col-md-6">加入购物车</button>
+                </li>
+                <li class='goods col-md-3 col-xs-6 col-sm-6'>
+                    <a href=""><img src="{% static '/myweb/gwc/6.jpg' %}" alt=""></a><br>
+                    <a href="">小米相机</a>
+                    <div></div>
+                    <a href="">99元</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <button class="col-md-6">加入购物车</button>
+                </li>
+               
+                <!-- 第二排笔记本 -->
+                <li class='goods col-md-3 col-xs-6 col-sm-6 col-md-offset-1 hidden-xs'>
+                    <a href=""><img src="{% static '/myweb/gwc/7.jpg' %}" alt=""></a><br>
+                    <a href="">小米手表</a>
+                    <div></div>
+                    <a href="">99元</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <button class="col-md-6">加入购物车</button>
+                </li>
+                
+                <li class='col-md-1'></li>                   
+            </ul>
+        </div>
+    </div>
+
+    
+{%endblock%}
+{%block myjs%}
+<script type="text/javascript">
+var id = document.getElementsByName('id');
+var m = document.getElementsByName('m');
+window.onload=function(){
+    var x = document.getElementsByName('xiaoji');
+    var y = document.getElementsByName('check');
+    var m = document.getElementsByName('m');
+    var num = 0;
+    var mm =0;
+    for (var i = x.length - 1; i >= 0; i--) {
+        inps[i].checked = true;
+        id[i].disabled = false;
+        num = num +  parseInt($(x[i]).text()); 
+        mm = mm + parseInt($(m[i]).val()); 
+        
+    };
+    console.log(num);
+    $('.heji').attr('value',num);
+    $('.jianshu').html(mm);
+}
+var inps = document.getElementsByName('check');
+var x = document.getElementsByName('xiaoji');
+var b = true;
+function func(a){
+        //获取元素
+        var inps = document.getElementsByName('check');
+        var x = document.getElementsByName('xiaoji');
+        var num = 0;
+        var mm = 0;
+        
+        //遍历
+        for (var i = 0; i < inps.length; i++) {
+            num = 0;            
+            switch(a){
+                case 1:
+                    if(b){
+                        inps[i].checked = true;
+                        console.log(1)
+                    }else{
+                        inps[i].checked = !inps[i].checked;
+                        console.log(inps[i].checked) 
+                        console.log(2)   
+                    }
+                    jisuan(); 
+                    break;                                      
+                case 3:
+                    inps[i].checked = !inps[i].checked;
+                    // $('.heji').html(num);
+                    jisuan();
+                    break;
+            }  
+                    
+        };
+        b = !b 
+        console.log(b)
+    };
+function jisuan(){
+    var num = 0;
+    var mm = 0;
+    for (var i = inps.length - 1; i >= 0; i--) {
+
+        if(inps[i].checked){
+            id[i].disabled = false;
+            num = num +  parseInt($(x[i]).text());
+            mm = mm + parseInt($(m[i]).val()); 
+        }else{
+            num = num;
+            mm = mm;
+            id[i].disabled = true;
+        }
+        $('.heji').attr('value',num);
+        $('.jianshu').html(mm);
+};
+};
+$('.check').click(function(){
+    var num = 0;
+    var mm = 0;
+    for (var i = inps.length - 1; i >= 0; i--) {
+        if(inps[i].checked){
+            num = num +  parseInt($(x[i]).text());
+            mm = mm + parseInt($(m[i]).val()); 
+            id[i].disabled = false;
+        }else{
+            num = num;
+            mm=mm;
+            id[i].disabled = true;
+        }
+        $('.heji').attr('value',num);
+        $('.jianshu').html(mm);
+};
+    
+})
+
+// allSelect();
+//           //商品数量加减
+//           //cartAddMin()
+// loadTotal();
+// var gidlist = [];
+// var list = document.getElementsByName('check');
+// function loadTotal(){
+//     var ids = [];
+//     //alert('ok');
+//     //获取所有选择的商品
+//     var list = $(".check").filter(".checked");
+//     $(".jianshu").html(list.length);
+//     var total = 0.0;
+//     for(var i=0;i<list.length;i++){
+//        total += parseFloat($(list[i]).attr('price'));
+//        ids.push($(list[i]).attr('gid'));
+//     }
+//     //alert(total);
+//     $(".heji").html(total);
+//     return ids;
+// }
+// function allSelect(){
+//   var aee = false;
+//   var see = false;
+//   // 全选
+// $('.checkAll').click(function(){
+//     if(aee==false){
+//       $(this).checked = true;
+//       $('.check').checked = true;
+//       aee = true;
+//     }else if(aee==true){
+//       $(this).checked = false;
+//       $('check').checked = false;
+//       aee = false;
+//     }
+//     loadTotal();
+//   })
+
+//   //单选
+//   $('check').click(function(){
+//     $(this).toggleClass("checked");
+//     loadTotal();
+//     /*
+//     if(see==false){
+//       $(this).addClass('checked');
+//       see = true;
+//     }else if(see==true){
+//       $(this).removeClass('checked');
+//       see = false;
+//     }
+//     */
+//   })
+// }
+
+// window.onload=function(){
+//     var x = document.getElementsByName('xiaoji');   
+//     var num = 0;
+//     for (var i = x.length -  i >= 0; i--) {
+//         inps[i].checked = true;
+//         num = num +  parseInt($(x[i]).text());         
+//     };
+//     console.log(num);
+//     $('.heji').attr('value',num);
+// }
+// var inps = document.getElementsByName('check');
+// var x = document.getElementsByName('xiaoji');
+// var id =document.getElementsByName('id');
+// var b = true;
+
+// function func(a){
+//         //获取元素
+//         var inps = document.getElementsByName('check');
+//         var x = document.getElementsByName('xiaoji');
+//         var num = 0;
+        
+//         //遍历
+//         for (var i = 0; i < inps.length; i++) {
+//             num = 0;            
+//             switch(a){
+//                 case 1:
+//                     if(b){
+//                         inps[i].checked = true;
+//                         console.log(1)
+//                     }else{
+//                         inps[i].checked = !inps[i].checked;  
+//                     }
+//                     jisuan(); 
+//                     break;                                      
+//                 case 3:
+//                     inps[i].checked = !inps[i].checked;
+//                     // $('.heji').html(num);
+//                     jisuan();
+//                     break;
+//             }  
+                    
+//         };
+//         b = !b 
+//         console.log(b)
+//     };
+// function jisuan(){
+//     var num = 0;    
+//     for (var i = inps.length - 1; i >= 0; i--) {        
+//         if(inps[i].checked){            
+//             num = num +  parseInt($(x[i]).text());
+//         }else{
+//             num = num            
+//         }
+//         $('.heji').html(num);    
+// };
+// };
+// $('.check').click(function() {
+//     var num = 0;
+//     for (var i = inps.length - 1; i >= 0; i--) {
+//         if(inps[i].checked){
+//             num = num +  parseInt($(x[i]).text());
+//         }else{
+//             num = num
+//         }
+//         $('.heji').attr('value',num);
+// };
+    
+// });
+
+
+
+
+
+
+           
+
+            // $('#del').click(function(){
+            //     $(this).parents('.this-good').css('display','none');
+            // })
+
+            // $('.checkAllGoods').click(function(){
+            //     if($(this).prop('checked')){
+            //         che_val = $('.checkOneGoods').length;
+            //         che_money = 0;
+            //         for (var i = $('.xj').length - 1; i >= 0; i--) {
+            //             che_money += parseInt($('.xj:eq('+i+')').html());
+            //         }
+            //         $('.checkOneGoods').attr('checked',status);
+            //     }else{
+            //         che_val = 0;
+            //         che_money = 0;
+            //         $('.checkOneGoods').removeAttr('checked');
+            //     }
+
+                
+            //     getAll(che_val, che_money)
+            // })
+
+            // $('.checkOneGoods').click(function () {
+            //     var this_money = parseInt($(this).parents('.this-good').children('.money').children('.money-total').children('.xj').html());
+
+            //     if($(this).prop('checked')){
+            //         getAll(che_val+=1, che_money+=this_money);
+            //         $(this).attr('checked',status);
+            //     }else{
+            //         getAll(che_val-=1, che_money-=this_money)
+            //         $(this).removeAttr('checked');
+            //     }
+            // })
+
+            // getAll()
+
+            // function getAll(now=che_val, money=che_money) {
+            //     var all = $('.checkOneGoods').length;
+            //     $(".span-2").html(all)
+            //     $(".span-3").html(now)
+
+            //     $(".span-4").html(money)
+            // }
+
+        </script> 
+    
+{%endblock%}

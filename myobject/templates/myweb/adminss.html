@@ -1,0 +1,28 @@
+{% extends "myweb/base.html" %}
+{% load static from staticfiles %}
+
+{%block mycss%}
+<link rel="stylesheet" type="text/css" href="{% static 'myweb/css/5.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'myweb/css/zhuce.css' %}">
+{%endblock%}
+{%block mymain%}
+    <!-- 主体 -->
+    <div class="row">
+        <h1 class="col-md-6 col-md-offset-3">个人信息修改成功!</h1>
+    </div>
+   
+    
+            
+    
+{%endblock%}
+{%block myjs%}
+    <script type="text/javascript">
+    
+    var time1 = setTimeout(myalert,1300); 
+    function myalert(){
+    self.location='admin'; 
+}  
+        
+    
+    </script> 
+{%endblock%}

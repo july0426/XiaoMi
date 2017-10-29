@@ -1,0 +1,117 @@
+{% extends 'myadmin/base.html' %}
+{% block mymain %}
+<div class="span9">
+	<h3>
+		商品信息
+	</h3>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>
+					商品ID
+				</th>
+				<th>
+					类别名称
+				</th>
+				<th>
+					商品名称
+				</th>
+				<th>
+					生产厂家 
+				</th>
+				<th>
+					单价
+				</th>
+				<th>
+					图片
+				</th>
+				<th>
+					状态
+				</th>
+				<th>
+					库存量
+				</th>
+				<th>
+					被购买数量
+				</th>
+				<th>
+					被点击数量
+				</th>
+				<th>
+					添加时间
+				</th>
+				<th>
+					操作
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for goods in goodslist %}
+			<tr>			
+				<td>
+					{{ goods.id }}
+				</td>
+				<td>
+					{{ goods.type }}
+				</td>
+				<td>
+					{{ goods.goods }}
+				</td>
+				<td>
+					{{ goods.company }}
+				</td>
+				<td>
+					{{ goods.price }}
+				</td>
+				<td>
+					<img src="/static/goods/{{ goods.picname }}" alt="" width="30px">
+				</td>
+				<td>
+					{% if goods.state ==  1%}
+						新添加
+					{% elif goods.state ==  2%}
+						在售
+					{% else %}
+						已下架
+					{% endif %}
+					
+				</td>
+				<td>
+					{{ goods.store }}
+				</td>
+				<td>
+					{{ goods.num }}
+				</td>
+				<td>
+					{{ goods.clicknum }}
+				</td>
+				<td>
+					{{ goods.addtime }}
+				</td>	
+				<td>
+					<a href="{% url 'myadmin_goodseidt' goods.id %}">编辑</a>
+				</td>
+				<td>
+					<a href="{% url 'myadmin_goodsdel' goods.id %}">删除</a>
+				</td>			
+			</tr>
+		{%endfor%}	
+		</tbody>
+	</table>					
+		<ul>
+		{%for pindex in plist%}
+			{%if pIndex == pindex%}
+			<li style="float:left;list-style:none">
+				<a href="{% url 'myadmin_goodsindex' pindex %}">{{pindex}}</a>&nbsp;&nbsp;
+			</li>
+			{%else%}
+			<li style="float:left;list-style:none">
+				<a href="{% url 'myadmin_goodsindex' pindex %}">{{pindex}}</a>&nbsp;&nbsp;
+			</li>			
+			{%endif%}
+		{%endfor%}
+		</ul>
+	
+</div>
+			
+{% endblock %}

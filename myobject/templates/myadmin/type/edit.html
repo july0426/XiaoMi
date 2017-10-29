@@ -1,0 +1,57 @@
+{% extends 'myadmin/base.html' %}
+{% block mymain %}
+<div class="span9">
+	<h3>
+		编辑商品信息
+	</h3>
+	<form action="{% url 'myadmin_typeupdate' type.id %}" method="post" enctype="multipart/form-data">
+		<table class="table table-bordered table-striped">
+		{% csrf_token %}
+			<fieldset >		
+			<div class="control-group">
+				<label class="control-label" for="input01">商品类别名称</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{type.name}}" name="name" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">商品父类名称</label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<select name = "id">
+            		<option value="{{pnid}}">{{pname}}</option>
+        		</select>
+			</div>		
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">保存</button> 
+				<button class="btn" type="reset">重置</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+			
+{% endblock %}
+{% block myjs %}
+
+<script type="text/javascript">
+        //jQuery入口程序
+    $(function(){
+        $.ajax({
+            url: "{% url 'myadmin_typeedits'  %}",
+            type: 'get',
+            data: {},
+            dataType:'json',
+            success:function(res){
+                var data = res.data;
+                for(var i=0;i<data.length;i++){
+                    $('<option value="'+data[i].id+'">'+data[i].name+'</option>').appendTo('select:last')
+                    //$('select:last').append('<option value="'+data[i].id+'">'+data[i].name+'</option>'); 
+                }
+            },
+            error:function(){
+            	alert("ajax加载失败！");
+            }
+        });       
+    });
+</script>
+{% endblock %}

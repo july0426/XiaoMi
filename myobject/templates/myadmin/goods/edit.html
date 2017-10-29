@@ -1,0 +1,81 @@
+{% extends 'myadmin/base.html' %}
+{% block mymain %}
+<div class="span9">
+	<h3>
+		编辑商品信息
+	</h3>
+	<form action="{% url 'myadmin_goodsupdate' goods.id %}" method="post" enctype="multipart/form-data">
+		<table class="table table-bordered table-striped">
+		{% csrf_token %}
+		<input type="hidden" name="oldpicname" value="{{ goods.picname }}"/>
+			<div class="control-group">
+				<label class="control-label" for="input01">商品id</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{goods.id}}" name='goodsid'/>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">商品名称</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{goods.goods}}"    name="goods" />
+				</div>
+			</div>	
+			<div class="control-group">
+				<label class="control-label" for="input01">生产厂家</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{goods.company}}"    name="company" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">简介</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{goods.descr}}"    name="descr" />
+				</div>
+			</div>	
+			<div class="control-group">
+				<label class="control-label" for="input01">单价</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{goods.price}}"    name="price" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">图片</label>
+				<div class="controls">
+					<img src="/static/goods/{{ goods.picname }}" alt="" width="300">
+				</div>
+			</div>	
+
+			<div class="control-group">
+				<label class="control-label" for="input01">更改图片</label>
+				<div class="controls">
+					<input type="file" class="input-xlarge" id="input01" value="" name="pic"/>
+				</div>
+			</div>					
+			<div class="control-group">
+				<label class="control-label" for="input01">状态</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="state" value="1" /> 新添加 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="state" value="2" /> 在售&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="state" value="3" /> 已下架	
+			</div>	
+			<div class="control-group">
+				<label class="control-label" for="input01">库存量</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{goods.store}}" name="store"/>
+				</div>
+			</div>							
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">保存</button> 
+				<button class="btn" type="reset">重置</button>
+			</div>
+		</table>
+	</form>
+</div>
+			
+{% endblock %}
+{% block myjs %}
+<script type="text/javascript">
+	window.onload = function(){
+		$("input[name='state'][value='{{goods.state}}']").attr("checked", true);  
+    }	
+</script>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'myadmin/base.html' %}
+{% block mymain %}
+<div class="span9">
+	<h3>
+		编辑订单详情信息
+	</h3>
+	<form action="{% url 'myadmin_detailupdate' detail.id %}" method="post" enctype="multipart/form-data">
+		<table class="table table-bordered table-striped">
+		{% csrf_token %}
+			<div class="control-group">
+				<label class="control-label" for="input01">订单ID</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{detail.orderid}}" name='orderid'/>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">商品ID</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{detail.goodsid}}"  name="goodsid" />
+				</div>
+			</div>		
+			<div class="control-group">
+				<label class="control-label" for="input01">商品名称</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{detail.name}}" name="name"/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">单价</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{detail.price}}" name="price"/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">数量</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{detail.num}}" name="num"/>
+				</div>
+			</div>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">保存</button> 
+				<button class="btn" type="reset">重置</button>
+			</div>
+		</table>
+	</form>
+</div>
+			
+{% endblock %}
+{% block myjs %}
+<script type="text/javascript">
+	window.onload = function(){
+		$("input[name='state'][value='{{detail.state}}']").attr("checked", true);
+        $("input[name='sex'][value='{{detail.sex}}']").attr("checked", true);     
+    }	
+</script>
+{% endblock %}

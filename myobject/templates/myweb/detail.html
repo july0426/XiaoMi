@@ -1,0 +1,163 @@
+{% extends 'myweb/base.html' %}
+{% load static from staticfiles %}
+{% block mycss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myweb/css/xiaomi6.css'%}">
+{% endblock %}
+{% block mymain %}
+	
+	<!-- 首页导航 固定在顶部-->	
+	<nav class="navbar row daohang3 navbar-default hidden-xs" navbar-fixed-top role="navigation">
+	    <div class="container-fluid  col-lg-10 col-lg-offset-1">
+	    <div class="navbar-header daohang-1">
+	    	<div></div>
+	        <button type="button" class="navbar-toggle" data-toggle="collapse"
+	                data-target="#example-navbar-collapse-1">
+	            <span class="sr-only">切换导航</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	        </button>
+	        <a class="navbar-brand " style="color:black" href="#">{{goods.goods}}</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="example-navbar-collapse-1">
+	        <ul class="nav navbar-nav daohang-2">
+	            <li ><a class="daohang-2" href="#">概述   <span>|</span></a></li>
+	            <li><a class="daohang-2" href="tuji.html">变焦双摄   <span>|</span></a></li>
+	            <li><a href="#">设计<span>|</span></a></li>
+	            <li><a href="#">参数<span>|</span></a></li>
+	            <li><a href="#">F码通道<span>|</span></a></li>
+	            <li><a class=" dh-pj" href="#">用户评价</a></li>
+	            {{stulist.goods}}
+	        </ul>
+	        <div class="col-md-1"></div>
+	    </div>
+	    </div>
+	</nav> 
+	<!--导航end -->
+		<!-- 主体 -->
+	<div class="container-fluid  col-md-10 col-md-offset-1">
+	<!-- 图片 -->
+		<div class="col-md-5 col-xs-12 col-sm-5">
+			<div style="height:3rem;"></div>
+			<img class="img-responsive " id="mi6" src="/static/goods/{{ goods.picname }}" width = "400px" alt="">
+		</div>
+		<!-- 详情 -->
+		<div class="col-md-7 col-xs-12 col-sm-7">
+			<div class="col-md-1"></div>
+			<form action="{% url 'gwcadd' goods.id %}" method="post">
+			{% csrf_token %}
+			<input type="hidden" name= 'gid' value = '{{gid}}'>
+				<div class="col-md-11">
+				<div class="col-md-12"><h2>{{goods.goods}}</h2></div>
+				<div class="col-md-11"><span class="span-1">{{goods.descr}}</span></div>
+				<div class="col-md-11  span-div"><span class="span-2">{{ goods.price }}</span></div>
+				<!-- 选择版本部分 -->
+				<div class="col-md-12 h4-bb"><h4 >选择版本</h4></div>
+				<div class="col-md-5 col-sm-12 col-xs-12 banb">
+					<span class="banb-sp1">全网通版 6GB+128GB</span><span class="banb-sp1">2899</span>
+				</div>
+				<div class="col-md-5 col-sm-12 col-xs-12 banb-1 banb1">
+					<span class="banb-sp2">全网通版 6GB+64GB</span><span class="banb-sp21">2499元</span>
+				</div>
+				<div class="col-md-5 col-sm-12 col-xs-12 banb-1 banb2">
+					<span class="banb-sp3">陶瓷尊享版版 12GB</span><span class="banb-sp31">2999元</span>
+				</div>
+				<!-- 选择颜色部分 -->
+				<div class="col-md-12 h4-bb"><h4 >选择颜色</h4></div>
+				<div class="col-md-5 col-sm-12 col-xs-6 yans banb">
+					<span class="yans-sp1 glyphicon glyphicon-unchecked"></span><span class="yans-sp1">亮蓝色</span>
+				</div>
+				<div class="col-md-5 col-sm-12 col-xs-6 yans-1 banb1">
+					<span class="yans-sp2 glyphicon glyphicon-unchecked"></span><span class="yans-sp21">黑&nbsp;&nbsp;色</span>
+				</div>
+				<div class="col-md-5 col-sm-12 col-xs-6 yans-2 banb">
+					<span class="yans-sp3 glyphicon glyphicon-unchecked"></span>
+					<span class="yans-sp31">陶瓷黑</span>					
+				</div>
+				<div class="col-md-5 col-sm-12 col-xs-6 yans-2 ban2">
+					<span class="yans-sp3 glyphicon glyphicon-unchecked"></span><span class="yans-sp31">白&nbsp;&nbsp;色</span>					
+				</div>
+				<!-- 意外险 -->
+				
+				<div class="col-md-9" style="height:1rem;"></div>
+				<div class="col-md-9 col-xs-12 souji">
+					<div class="col-md-12 " style="height:1rem;"></div>
+					<p class="souji-p">小米6 全网通 6GB+128GB 亮蓝色</p>
+					<h3 class="souji-zj ">总计&nbsp;&nbsp;:2899元</h3>
+				</div>
+				<div class="col-md-2 visible-lg souji">
+					<div class="col-md-12 visible-lg'%}" style="height:1rem;"></div>
+					<p class="souji-p visible-lg'%}" >2899元</p>
+					<h3>&nbsp;&nbsp;</h3>
+				</div>
+				<div class="col-md-12 col-xs-12" style="height:1rem;"></div>
+				<div class="col-md-1 col-sm-1">
+					<span class="glyphicon glyphicon-ok-sign"></span>
+				</div>
+				<div class="col-md-10 visible-lg'%}">
+					<span class="tui visible-lg'%}">支持七天无理由退货</span>
+				</div>
+				<div class="col-md-11 hx visible-lg'%}"></div>
+				<div class="col-md-12 col-xs-12 col-sm-12" style="height:2rem;"></div>
+				<div class="col-md-1 col-sm-1">
+					<span class="glyphicon glyphicon-map-marker"></span>
+				</div>
+				<div class="col-md-2 col-sm-2"><span>北京市</span></div>
+				<div class="col-md-2 col-sm-2"><span>东城区</span></div>
+				<div class="col-md-3 col-sm-3"><span>永定门外街道</span></div>
+				<div class="col-md-2 col-sm-2"><span style="color:#ff6700">修改</span></div>
+				<div class="col-md-2 col-sm-2"></div>	
+				<div class="col-md-10 col-sm-10">
+					<div class="col-md-1"></div>
+					<span style="color:#b0b0b0">该地区暂不支持配送</span>
+				</div>
+				<div class="col-md-9 col-xs-12 souji">
+					
+					<input type="text" name = 'm' value="1">
+				</div>
+				<div class="col-md-9 col-xs-12 souji">
+					<button type="submit">立即购买</button>
+					<button type="submit">加入购物车</button>
+				</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- 包装清单 -->
+	<div class="container-fluid  col-md-8 col-md-offset-2">
+		<img class="img-responsive" src="{% static 'myweb/xiaomi6/bz.jpg'%}">
+	</div>
+	<div class="row"></div>
+{% endblock %}
+{% block myjs %}	
+	<script type="text/javascript">
+	
+	// 页面向下滚动时有一个导航一直在顶端
+	$(window).scroll(function(){
+		if($(document).scrollTop()>=167){			
+			$(".daohang3").addClass('navbar-fixed-top')
+		}else{
+			$(".daohang3").removeClass('navbar-fixed-top')
+		}
+	})
+	// 鼠标移入  图片变化
+	// $('.banb').mouseover(function(){
+	// 	$('#mi6').attr('src','/static/myweb/xiaomi6/mi6-0.jpg')
+	// })
+	// $('.banb').mouseout(function(){
+	// 	$('#mi6').attr('src','/static/myweb/xiaomi6/mi6-1.jpg')
+	// })
+	// $('.banb1').mouseover(function(){
+	// 	$('#mi6').attr('src','/static/myweb/xiaomi6/mi6-4.jpg')
+	// })
+	// $('.banb1').mouseout(function(){
+	// 	$('#mi6').attr('src','/static/myweb/xiaomi6/mi6-1.jpg')
+	// })
+	// $('.banb2').mouseover(function(){
+	// 	$('#mi6').attr('src','/static/myweb/xiaomi6/mi6-1.jpg')
+	// })
+	// $('.banb2').mouseout(function(){
+	// 	$('#mi6').attr('src','/static/myweb/xiaomi6/mi6-0.jpg')
+	// })
+	</script>
+{% endblock %}

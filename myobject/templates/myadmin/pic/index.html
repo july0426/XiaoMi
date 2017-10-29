@@ -1,0 +1,47 @@
+
+   
+{% extends 'myadmin/base.html' %}
+{% block myjs %}
+        
+        <script>
+            //自定义执行信息删除提示判断，参数uu是成功的删除url地址
+            function doDel(uu){
+                if(confirm("确定要删除吗？")){
+                    //网页跳转
+                    window.location=uu;
+                }
+            }
+            
+        </script>
+{% endblock %}
+{% block mymain %}
+        <center>
+            
+            {% include 'myadmin/pic/menu.html' %}
+            
+            <h3>浏览相册图片信息</h3>
+            <table width="800" border="1">
+                <tr>
+                    <th>id号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>图片</th>
+                    <th>时间</th>
+                    <th>操作</th>
+                </tr>
+                {% for stu in stulist %}
+                    <tr>
+                        <td>{{ stu.id }}</td>
+                        <td>{{ stu.name }}</td>
+                        <td>{{ stu.age }}</td>
+                        <td><img src="/static/pic/{{ stu.picname }}" width="100"/></td>
+                        <td>{{ stu.addtime|date:"Y-m-d" }}</td>
+                        <td>
+                            <a href="{% url 'myadmin_editpic' stu.id %}">编辑</a>
+                            <a href="javascript:doDel('{% url 'myadmin_delpic' stu.id %}');">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </center>
+{% endblock %}

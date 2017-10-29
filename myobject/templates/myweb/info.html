@@ -1,0 +1,225 @@
+{% extends "myweb/base.html" %}
+{% load static from staticfiles %}
+{%block block_js%}
+
+<!-- <script type="text/javascript" src="{% static 'myweb/public/js/5.js' %}"></script> -->
+{%endblock%}
+{%block mycss%}
+<link rel="stylesheet" type="text/css" href="{% static 'myweb/css/5.css' %}">
+{%endblock%}
+{%block mymain%}
+    <!-- 主体 -->
+    <div class="container" style="background: rgb(245, 245, 245);height:300px;">
+        <div class="col-md-12 hidden-xs" style="height:4rem"></div>
+        
+        <h1>{{info}}</h1>
+    <div class="container hidden-xs" style="background: rgb(245, 245, 245);">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-3 "><div style="height:3.8rem"></div><div class="h2-div1"></div></div>
+                <div class="col-md-5 "><h2 class="mm">  购买购物车中商品的人还买了</h2></div>
+                <div class="col-md-3 "><div style="height:3.8rem"></div><div class="h2-div2"></div></div>               
+            </div>
+        </div>
+    </div>
+    <!-- 推荐商品 -->
+    <div class="container" style="background: rgb(245, 245, 245);">
+        <div class="row col-md-12 hidden-xs">
+            <ul>
+                <li class='col-md-1'></li>
+                <li class='goods col-md-3 col-xs-6 col-sm-6 col-md-offset-1'>
+                    <a href=""><img src="{% static '/myweb/gwc/2.jpg' %}" alt=""></a><br>
+                    <a href="">小米POLO衫</a>
+                    <div></div>
+                    <a href="">149元</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <button class="col-md-6">加入购物车</button>
+                </li>
+                <li class='goods col-md-3 col-xs-6 col-sm-6'>
+                    <a href=""><img src="{% static '/myweb/gwc/3.jpg' %}" alt=""></a><br>
+                    <a href="">小米T恤</a>
+                    <div></div>
+                    <a href="">99元</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <button class="col-md-6">加入购物车</button>
+                </li>
+                <li class='goods col-md-3 col-xs-6 col-sm-6'>
+                    <a href=""><img src="{% static '/myweb/gwc/4.jpg' %}" alt=""></a><br>
+                    <a href="">小米T恤</a>
+                    <div></div>
+                    <a href="">99元</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <button class="col-md-6">加入购物车</button>
+                </li>
+                <li class='col-md-1'></li>
+                <li class='goods col-md-3 col-xs-6 col-sm-6'>
+                    <a href=""><img src="{% static '/myweb/gwc/5.jpg' %}" alt=""></a><br>
+                    <a href="">小米胸针</a>
+                    <div></div>
+                    <a href="">39元</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <button class="col-md-6">加入购物车</button>
+                </li>
+                <li class='goods col-md-3 col-xs-6 col-sm-6'>
+                    <a href=""><img src="{% static '/myweb/gwc/6.jpg' %}" alt=""></a><br>
+                    <a href="">小米相机</a>
+                    <div></div>
+                    <a href="">99元</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <button class="col-md-6">加入购物车</button>
+                </li>
+               
+                <!-- 第二排笔记本 -->
+                <li class='goods col-md-3 col-xs-6 col-sm-6 col-md-offset-1 hidden-xs'>
+                    <a href=""><img src="{% static '/myweb/gwc/7.jpg' %}" alt=""></a><br>
+                    <a href="">小米手表</a>
+                    <div></div>
+                    <a href="">99元</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <button class="col-md-6">加入购物车</button>
+                </li>
+                
+                <li class='col-md-1'></li>                   
+            </ul>
+        </div>
+    </div>
+
+    
+{%endblock%}
+{%block myjs%}
+<script type="text/javascript">
+window.onload=function(){
+    var x = document.getElementsByName('xiaoji');
+    var y = document.getElementsByName('check');
+    var num = 0;
+    for (var i = x.length - 1; i >= 0; i--) {
+        
+        num = num +  parseInt($(x[i]).text()); 
+        
+    };
+    console.log(num);
+    $('.heji').html(num);
+}
+var inps = document.getElementsByName('check');
+var x = document.getElementsByName('xiaoji');
+var b = true;
+function func(a){
+        //获取元素
+        var inps = document.getElementsByName('check');
+        var x = document.getElementsByName('xiaoji');
+        var num = 0;
+        
+        //遍历
+        for (var i = 0; i < inps.length; i++) {
+            num = 0;            
+            switch(a){
+                case 1:
+                    if(b){
+                        inps[i].checked = true;
+                        console.log(1)
+                    }else{
+                        inps[i].checked = !inps[i].checked;
+                        console.log(inps[i].checked) 
+                        console.log(2)   
+                    }
+                    jisuan(); 
+                    break;                                      
+                case 3:
+                    inps[i].checked = !inps[i].checked;
+                    // $('.heji').html(num);
+                    jisuan();
+                    break;
+            }  
+                    
+        };
+        b = !b 
+        console.log(b)
+    };
+function jisuan(){
+    var num = 0;
+    for (var i = inps.length - 1; i >= 0; i--) {
+
+        if(inps[i].checked){
+
+            num = num +  parseInt($(x[i]).text());
+        }else{
+            num = num
+        }
+        $('.heji').html(num);
+};
+};
+$('.check').click(function() {
+    var num = 0;
+    for (var i = inps.length - 1; i >= 0; i--) {
+
+        if(inps[i].checked){
+
+            num = num +  parseInt($(x[i]).text());
+        }else{
+            num = num
+        }
+        $('.heji').html(num);
+};
+    
+});
+
+
+
+
+
+
+           
+
+            // $('#del').click(function(){
+            //     $(this).parents('.this-good').css('display','none');
+            // })
+
+            // $('.checkAllGoods').click(function(){
+            //     if($(this).prop('checked')){
+            //         che_val = $('.checkOneGoods').length;
+            //         che_money = 0;
+            //         for (var i = $('.xj').length - 1; i >= 0; i--) {
+            //             che_money += parseInt($('.xj:eq('+i+')').html());
+            //         }
+            //         $('.checkOneGoods').attr('checked',status);
+            //     }else{
+            //         che_val = 0;
+            //         che_money = 0;
+            //         $('.checkOneGoods').removeAttr('checked');
+            //     }
+
+                
+            //     getAll(che_val, che_money)
+            // })
+
+            // $('.checkOneGoods').click(function () {
+            //     var this_money = parseInt($(this).parents('.this-good').children('.money').children('.money-total').children('.xj').html());
+
+            //     if($(this).prop('checked')){
+            //         getAll(che_val+=1, che_money+=this_money);
+            //         $(this).attr('checked',status);
+            //     }else{
+            //         getAll(che_val-=1, che_money-=this_money)
+            //         $(this).removeAttr('checked');
+            //     }
+            // })
+
+            // getAll()
+
+            // function getAll(now=che_val, money=che_money) {
+            //     var all = $('.checkOneGoods').length;
+            //     $(".span-2").html(all)
+            //     $(".span-3").html(now)
+
+            //     $(".span-4").html(money)
+            // }
+
+        </script> 
+    
+{%endblock%}

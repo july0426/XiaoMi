@@ -1,0 +1,163 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>小米商城注册页面</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'myweb/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'myweb/js/jquery-1.12.4.min.js' %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'myweb/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'myweb/css/zhuce.css' %}">
+	<style type="text/css">
+	</style>
+</head>
+<body>
+    <script type="text/javascript" src="{% static 'myweb/js/jquery-1.12.4.min.js' %}"></script>
+    <div class="container-fluid">
+        <div class="row" style="background: #f9f9f9;">
+            <div class="col-md-3 col-sm-1" style="background: #f9f9f9;"></div>
+            <div class="col-md-6 col-sm-10 col-xs-12">
+                <!-- <div class="row" style="background: #f9f9f9; height:3rem;"></div> -->
+                <div class="row" style="background: #fff;">
+                    <div class="col-md-3 col-sm-1"></div>
+                    <div class="col-md-6 col-sm-10 col-xs-12">
+                        <div class="row logo">
+                            <div class="col-md-4 col-sm-4 sol-xs-4 "></div>
+
+                            <div class="col-md-4 col-sm-4 sol-xs-4 logo">
+                                <!-- <div class="col-md-3 col-sm-3 col-xs-3"></div> -->
+                                <img class="img-responsive" src="{% static 'myweb/denglu/mi.png'%}" alt="">
+                                <!-- <div class="col-md-3 col-sm-3 col-xs-3"></div> -->
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row" style="height:3rem"></div>
+                        <form action="{%url 'passwd2' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-3"></div>
+                                <div style="font-size:30px">修改密码</div>
+                                <div class="row" style="height:4rem"></div>
+                                {{info}}
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <label for="">输入原密码</label>
+                                </div>                              
+                                <div class="col-md-12 col-sm-8 col-xs-8">
+                                    <input class="int1"  type="passwd" value="" name = 'passwd'>
+                                </div> 
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <label for="">输入新密码</label>
+                                </div>                              
+                                <div class="col-md-12 col-sm-8 col-xs-8">
+                                    <input class="int1"  type="passwd1" value="" name = 'name'>
+                                </div> 
+                                 
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <label for="">再次输入新密码</label>
+                                </div>                                                  
+                                <div class="col-md-12 col-sm-8 col-xs-8">
+                                    <input class="int1"  type="passwd2" value="" name = 'passwd3'>
+                                </div> 
+                                                                                             
+                                                                      
+                                <div class="col-md-12 col-sm-8 col-xs-8 yinc" style="
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <button type="submit" class="btn1">立即提交</button>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12" style="height: 1rem;"></div>
+                                <div class="col-md-12 col-sm-12 col-xs-12"><label for="">注册帐号即表示您同意并愿意遵守小米 <a href="">用户协议</a>和 <a href="">隐私政策</a></label></div>
+                                <!-- 底部 -->
+                                <div class="col-md-12 col-sm-12 col-xs-12" style="height: 9rem;"></div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <ul class="ul-all">
+                                        <li><a class="li-1" href="">简体 |</a></li>
+                                        <li><a class="li-2" href="">繁体 |</a></li>
+                                        <li><a class="li-2" href="">English |</a></li>
+                                        <li><a class="li-2" href="">常见问题</a></li>
+                                    </ul>
+                                </div>
+                            </div>                                                       
+                        </form>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12"><div class="col-md-2 col-sm-2 col-xs-2" style="height:1px"></div><label for="">小米公司版权所有-京ICP备10046444-<a href=""><img src="denglu/ghs.png" alt=""></a>京公网安备11010802020134号-京ICP证110507号</label></div>
+                        </div>                        
+                    </div>
+                    <div class="col-md-3 col-sm-1" style="background: #f9f9f9;"></div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-1"></div>
+        </div>          
+    </div>
+<!-- 事件 验证输入是否为正确 -->
+
+ <script type="text/javascript">
+    $("#more").click(function(){
+        var cur = $('.yinc');
+        if(cur.css('display') == 'block'){
+            cur.css('display', 'none');
+            
+        }else{
+            cur.css('display', 'block');
+            
+        }
+    });
+        // var valid1=false;
+        // var valid2=false;
+        // var valid3=false;
+        // $('#country').blur(function(){
+        //     var a = $(this).val();
+        //     if(a.length <= 10){
+        //         $("#span-a").html("")
+        //         valid1=true;
+        //     }else{
+        //         valid1=false;
+        //         $("#span-a").html("国家格式不正确").css('color','red')
+        //     }
+            
+        // });
+        // 判断电话
+        // $('#phone').blur(function(){
+        //     var a = $(this).val();
+        //     var reg = /^(((13[0-9]{1})|159|153)+\d{8})$/;
+
+        //     if(reg.test(a)){
+        //         $("#span-b").html("")
+        //         valid2=true;
+        //     }else{
+        //         valid2=false;
+        //         $("#span-b").html("电话号码不正确").css('color','red')
+        //     }
+        // });
+        // 判断验证码
+        // $('#yzm').blur(function(){
+        //     var a = $(this).val();
+        //     var reg = 'E2QPD';
+
+        //     if(a == reg){
+        //         valid3=true;
+        //         $("#span-c").html("")
+        //     }else{
+        //         valid3=false;
+        //         $("#span-c").html("验证码错误").css('color','red')
+        //     }
+        // });
+        // $('form').submit(function(){
+        //     //判断如果都正确
+        //     if(valid1 && valid2 && valid3){
+        //         return true;
+        //     }
+        //     //阻止默认行为
+        //     return false;
+        // })
+    </script>
+
+</body>
+</html>
